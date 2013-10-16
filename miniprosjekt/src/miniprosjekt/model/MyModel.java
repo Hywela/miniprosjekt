@@ -81,8 +81,6 @@ public class MyModel extends AbstractTableModel {
 				return "JButton";
 			else if (media instanceof Jtextfield)
 				return "JTextField";
-			else if (media instanceof Jbutton)
-				return "JButton";
 			else if (media instanceof Jtextarea)
 				return "JTextArea";
 			else if (media instanceof Jlabel)

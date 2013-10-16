@@ -38,7 +38,8 @@ public class ButtonLayout extends JFrame {
 	private JToolBar toolbar = new JToolBar ();
 	private String layoutType[] = {"JLabel", "JTextField", "JTextArea", "JButton" };
 	private JComboBox<String> animalTypeEditor = new JComboBox<String> (layoutType);
-	
+	private String alignments[] = {"Left", "Right", "Top", "Bottom" };
+	private JComboBox<String> alignmentEditor = new JComboBox<String> (alignments);
 		
     
 	public ButtonLayout () {
@@ -50,6 +51,8 @@ public class ButtonLayout extends JFrame {
 		
 		add (new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(animalTypeEditor));
+		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(alignmentEditor));
+		
 		
 		JButton load = new JButton (new ImageIcon(getClass().getResource("/images/file.png")));
 		load.setToolTipText("Last inn en dyrehage");
