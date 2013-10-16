@@ -137,21 +137,32 @@ public class MyModel extends AbstractTableModel {
 					media.setUtfylling("Full Hight");
 			 }
 		}
-
 			 if (columnIndex==8){
-				 if (((String)aValue).equals("Wrap Content")) {
-					media.setForankring("Wrap Content");
+				 if (((String)aValue).equals("Left")) {
+					media.setForankring("Left");
 				 }
-				 if (((String)aValue).equals("Fill Parrent")) {
-					 media.setForankring("Fill Parrent");
-				 }
-					
-				 if (((String)aValue).equals("Full width")) {
-					 media.setForankring("Full width");
+				 if (((String)aValue).equals("Top-Left")) {
+					 media.setForankring("Top-Left");
 				 }
 					
-				 if (((String)aValue).equals("Full Hight")) {
-					 media.setForankring("Full Hight");
+				 if (((String)aValue).equals("Bottom-Left")) {
+					 media.setForankring("Bottom-Left");
+				 }
+					
+				 if (((String)aValue).equals("Right")) {
+					 media.setForankring("Right");
+				 }
+				 if (((String)aValue).equals("Top-Right")) {
+					 media.setForankring("Top-Right");
+				 }
+				 if (((String)aValue).equals("Bottom-Right")) {
+					 media.setForankring("Bottom-Right");
+				 }
+				 if (((String)aValue).equals("Top")) {
+					 media.setForankring("Top");
+				 }
+				 if (((String)aValue).equals("Bottom")) {
+					 media.setForankring("Bottom");
 				 }
 			
 		}
