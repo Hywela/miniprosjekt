@@ -45,6 +45,7 @@ public class SerializableAnimal implements Serializable {
 	
 	public String toString () {
 		StringBuilder sb = new StringBuilder ();
+	
 		sb.append (getType());
 		sb.append ("en ");
 		sb.append (getName());

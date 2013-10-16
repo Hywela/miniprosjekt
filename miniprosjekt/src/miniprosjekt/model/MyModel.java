@@ -11,14 +11,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import miniprosjekt.variables.BaseMedia;
-import miniprosjekt.variables.TvSerie;
-import miniprosjekt.variables.Movie;
+import miniprosjekt.variables.Jbutton;
+import miniprosjekt.variables.Jtextfield;
 
 
 @SuppressWarnings("serial")
 public class MyModel extends AbstractTableModel {
 	Vector<BaseMedia> data = new Vector<BaseMedia>();
-	String titles[] = {"Media", "Tittle", "Raiting"};
+	String titles[] = { "Variabelnavn", "Tekst", "Rad","Rader", "Kolonne","Utfylling", "Forankring"};
 	JFrame mainFrame;
 	
 	/*
@@ -38,14 +38,19 @@ public class MyModel extends AbstractTableModel {
 		switch (columnIndex) {
 			case 0 : return ("").getClass();
 			case 1 : return ("").getClass();
-			case 2 : return (new Integer(0)).getClass();
+			case 2 : return ("").getClass();
+			case 3 : return ("").getClass();
+			case 4 : return ("").getClass();
+			case 5 : return ("").getClass();
+			case 6 : return ("").getClass();
+			case 7 : return (new Integer(0)).getClass();
 		}
 		return ("").getClass();
 	}
 	
 	@Override
 	public int getColumnCount() {
-		return 3;
+		return 7;
 	}
 
 	@Override
@@ -59,13 +64,13 @@ public class MyModel extends AbstractTableModel {
 		if (col>0) {
 			switch (col) {
 				case 1 : return media.getName();
-				case 2 : return media.getAge();
+				case 2 : return media.getData();
 			}
 		} else {
-			 if (media instanceof TvSerie)
-				return "TvSerie";
-			else if (media instanceof Movie)
-				return "Movie";
+			 if (media instanceof Jbutton)
+				return "JButton";
+			else if (media instanceof Jtextfield)
+				return "JTextField";
 			else if (media instanceof BaseMedia)
 				return "Velg et type Media";
 		}
@@ -89,20 +94,20 @@ public class MyModel extends AbstractTableModel {
 		if (columnIndex==1)
 			media.setName ((String)aValue);
 		if (columnIndex==2)
-			media.setAge ((Integer)aValue);
+			media.setData ((String)aValue);
 		if (columnIndex==0) {
 			BaseMedia newMedia = null;
-			 if (((String)aValue).equals("TvSerie")) {
-				 newMedia = new TvSerie (media);
-				String tmp = JOptionPane.showInputDialog (mainFrame, "Date?");
+			 if (((String)aValue).equals("JButton")) {
+				 newMedia = new Jbutton (media);
+			//	String tmp = JOptionPane.showInputDialog (mainFrame, "Date?");
 				/*if (tmp!=null&&tmp.equalsIgnoreCase("ja"))
 					((TvSerie)newMedia).setLikesCats(true);
 				else
 					((TvSerie)newMedia).setLikesCats(false);
 			*/
-			 } else if (((String)aValue).equals("Movie")) {
-				newMedia = new Movie (media);
-				((Movie)newMedia).setBowlPlacement(JOptionPane.showInputDialog (mainFrame, "I hvilket rom står gullfiskbollen?"));
+			 } else if (((String)aValue).equals("JTextField")) {
+				newMedia = new Jtextfield (media);
+				//((Jtextfield)newMedia).setBowlPlacement(JOptionPane.showInputDialog (mainFrame, "I hvilket rom står gullfiskbollen?"));
 			}
 			data.set(rowIndex, newMedia);
 		}

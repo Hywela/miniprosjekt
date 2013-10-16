@@ -19,6 +19,7 @@ public class SerializeAnimals {
 			// Det er denne ObjectOutputStreamen som tillater oss å skrive objekter rett til fil
 			input = new Scanner (new File ("dyr.txt"));
 			output = new ObjectOutputStream (new FileOutputStream("dyr.ser"));
+			
 		} catch (FileNotFoundException fnfe) {
 			System.err.println ("Fant ikke filen dyr.txt");
 			System.exit(1);
@@ -29,14 +30,19 @@ public class SerializeAnimals {
 	}
 	
 	private void serialize () {
+		
 		try {
+		
 			while (input.hasNext()) {
 				SerializableAnimal animal = new SerializableAnimal ();
+				
 				animal.setType(input.next());
 				animal.setName(input.next());
 				animal.setAge(input.nextInt());
 				// Skriver objektet til fil, kan også skrive int, float etc til fil.
+				
 				output.writeObject(animal);
+		
 				System.out.printf("Objektet '%s' er skrevet til disk\n", animal);
 			}
 		}  catch (NoSuchElementException nsee) {

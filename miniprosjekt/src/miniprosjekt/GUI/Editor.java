@@ -19,29 +19,31 @@ import miniprosjekt.variables.Media;
 
 @SuppressWarnings("serial")
 public class Editor extends JPanel {
-	private static final String animalTypes[] = {"TvSerie","Movie"};
-	private JComboBox<String> type = new JComboBox<String> (animalTypes);
+	private static final String mediaTypes[] = {"JLabel", "JTextField", "JTextArea", "JButton"};
+	private JComboBox<String> type = new JComboBox<String> (mediaTypes);
 	private JTextField name = new JTextField (20);
 	private JTextField age = new JTextField (4);
 	private JButton add = new JButton ("Add a Show");
 	
 	public Editor () {
+		
 		GridBagLayout gbl = new GridBagLayout ();
 		setLayout (gbl);
 		GridBagConstraints gbc = new GridBagConstraints ();
+		
 		gbc.anchor = GridBagConstraints.EAST;
 		gbc.insets = new Insets (2,2,2,2);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		JLabel ltype = new JLabel ("Type dyr : ");
+		JLabel ltype = new JLabel ("Type Media : ");
 		gbl.setConstraints(ltype, gbc);
 		add (ltype);
 		gbc.gridy = 1;
-		JLabel lname = new JLabel ("Navn : ");
+		JLabel lname = new JLabel ("Title : ");
 		gbl.setConstraints(lname, gbc);
 		add (lname);
 		gbc.gridy = 2;
-		JLabel lage = new JLabel ("Alder : ");
+		JLabel lage = new JLabel ("Raiting : ");
 		gbl.setConstraints(lage, gbc);
 		add (lage);
 		gbc.anchor = GridBagConstraints.WEST;
