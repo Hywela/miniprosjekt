@@ -20,6 +20,7 @@ import miniprosjekt.variables.Jtextarea;
 
 @SuppressWarnings("serial")
 public class MyModel extends AbstractTableModel {
+	int i;
 	Vector<BaseMedia> data = new Vector<BaseMedia>();
 	String titles[] = { "Type","VariabelNavn", "Tekst", "Rad", "Kolonne","Rader" ,
 			"Kolonner","Utfylling", "Forankring"};
@@ -91,10 +92,12 @@ public class MyModel extends AbstractTableModel {
 		return null;
 	}
 	
-	public void addAnimal () {
+	public void addMedia () {
 		BaseMedia media = new BaseMedia ();
-		data.add (media);
+		data.add(media);
 		fireTableRowsInserted(data.size(), data.size());
+		media.setVariabelname("ny"+i);
+		i++;
 	}
 	
 	@Override

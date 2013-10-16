@@ -2,13 +2,11 @@ package miniprosjekt.variables;
 
 public class Jtextfield extends BaseMedia {
 	private static final long serialVersionUID = 1L;
-
-
+	
 	
 	public Jtextfield(BaseMedia media) {
 		super(media);
 	}
-
 
 	
 	public String getAddToTable() {
@@ -21,7 +19,7 @@ public class Jtextfield extends BaseMedia {
 	}
 //Say new about the variable
 	public String toString() {
-		return String.format("%s %s %s(\"%s\");", "jtext", super.toString(),
-				"JTextField", super.getVariabelname());
+		return String.format("%s %s %s(\"%s\");", super.getVariabelname(), super.toString(),
+				"JTextField", super.getText());
 	}
 }
