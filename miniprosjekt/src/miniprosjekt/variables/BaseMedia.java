@@ -16,6 +16,34 @@ public class BaseMedia implements Serializable{
 
 	private String variabelname;
 	
+	/**
+	 * @return the forankring
+	 */
+	public String getForankring() {
+		return forankring;
+	}
+
+	/**
+	 * @param forankring the forankring to set
+	 */
+	public void setForankring(String forankring) {
+		this.forankring = forankring;
+	}
+
+	/**
+	 * @return the utfylling
+	 */
+	public String getUtfylling() {
+		return utfylling;
+	}
+
+	/**
+	 * @param utfylling the utfylling to set
+	 */
+	public void setUtfylling(String utfylling) {
+		this.utfylling = utfylling;
+	}
+
 	public BaseMedia () {
 	rad = 1;
 	kolonne = 1;

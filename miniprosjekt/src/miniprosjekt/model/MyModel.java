@@ -48,7 +48,7 @@ public class MyModel extends AbstractTableModel {
 			case 5 : return (new Integer(0)).getClass();
 			case 6 : return (new Integer(0)).getClass();
 			case 7 : return ("").getClass();
-			case 8 : return (new Integer(0)).getClass();
+			case 8 : return ("").getClass();
 		}
 		return ("").getClass();
 	}
@@ -74,7 +74,8 @@ public class MyModel extends AbstractTableModel {
 				case 4 : return media.getKolonne();
 				case 5 : return media.getRader();
 				case 6 : return media.getKolonner();
-				case 7 : return media.getVariabelname();
+				case 7 : return media.getUtfylling();
+				case 8 : return media.getForankring();
 			}
 		} else {
 			 if (media instanceof Jbutton)
@@ -117,22 +118,47 @@ public class MyModel extends AbstractTableModel {
 			media.setRader((int)aValue);
 		if (columnIndex==6)
 			media.setKolonner((int)aValue);
-		if (columnIndex==7)
-			media.setKolonner((int)aValue);
-		
-		
+		if (columnIndex==7){
+			 if (((String)aValue).equals("Wrap Content")) {
+				media.setUtfylling("Wrap Content");
+			 }
+			 if (((String)aValue).equals("Fill Parrent")) {
+					media.setUtfylling("Fill Parrent");
+			 }
+				
+			 if (((String)aValue).equals("Full width")) {
+					media.setUtfylling("Full width");
+			 }
+				
+			 if (((String)aValue).equals("Full Hight")) {
+					media.setUtfylling("Full Hight");
+			 }
+		}
+
+			 if (columnIndex==8){
+				 if (((String)aValue).equals("Wrap Content")) {
+					media.setForankring("");
+				 }
+				 if (((String)aValue).equals("Fill Parrent")) {
+					 media.setForankring("");
+				 }
+					
+				 if (((String)aValue).equals("Full width")) {
+					 media.setForankring("");
+				 }
+					
+				 if (((String)aValue).equals("Full Hight")) {
+					 media.setForankring("");
+				 }
+			
+		}
 		
 		
 		if (columnIndex==0) {
 			BaseMedia newMedia = null;
 			 if (((String)aValue).equals("JButton")) {
 				 newMedia = new Jbutton (media);
-			//	String tmp = JOptionPane.showInputDialog (mainFrame, "Date?");
-				/*if (tmp!=null&&tmp.equalsIgnoreCase("ja"))
-					((TvSerie)newMedia).setLikesCats(true);
-				else
-					((TvSerie)newMedia).setLikesCats(false);
-			*/
+			
 			 } else if (((String)aValue).equals("JTextField")) {
 				newMedia = new Jtextfield (media);
 				//((Jtextfield)newMedia).setBowlPlacement(JOptionPane.showInputDialog (mainFrame, "I hvilket rom står gullfiskbollen?"));
