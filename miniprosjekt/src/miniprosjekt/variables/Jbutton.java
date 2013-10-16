@@ -19,12 +19,15 @@ public class Jbutton extends BaseMedia {
 	public void setLikesCats(boolean likesCats) {
 		this.likesCats = likesCats;
 	}
+	public String getAddToTable(){
+		return String.format( "%s (%s);","add",super.getAddToTable());
+	}
+	
 	public String getDec () {
 		return String.format( "%s %s;","JTextField",super.getDec());
 	}
-	// toString returnerer toString fra BaseAnimal og hekter på det som er spesielt for hunder.
 	public String toString () {
-		return String.format("%s%s %s.", "Hunden heter ", super.toString(), (getLikesCats()?"Hunden liker katter":"Hunden liker ikke katter"));
+		return String.format("%s %s %s(%s.%s);", "jtext" , super.toString(), "JTextField","JLabel","CENTER");
 	}
 
 }

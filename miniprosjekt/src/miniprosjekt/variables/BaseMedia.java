@@ -4,30 +4,38 @@ import java.io.Serializable;
 
 // Alle dyr har det til felles at de har et navn og en alder
 public class BaseMedia implements Serializable{
+	/**
+	 * @return the horizontal
+	 */
+	public String getHorizontal() {
+		return Horizontal;
+	}
+
+
 	private static final long serialVersionUID = 1L;
 	private String name;
-	private int age;
-	private String data;
+	private String text;
+	private String Horizontal;
+	private String Vertical;
+
 	private String variabelname;
 	
 	public BaseMedia () {
 		name = "";
-		age = 0;
-		data = "";
+		
 		variabelname="TODO";
 	}
 
 	// Vi kan opprette et nytt dyr og ta vare på egenskapene som alle dyr har til felles
 	public BaseMedia (BaseMedia media) {
 		this.name = media.name;
-		variabelname="TODO";
-		this.data = media.data;
+		variabelname=media.variabelname;
+		
 	}
 	
-	public BaseMedia (String name ,int age) {
-		this.name = name;
-		
-		this.data = data; 
+	public BaseMedia (String variabelname) {
+		this.variabelname = variabelname;
+		 
 	}
 	
 
@@ -38,6 +46,7 @@ public class BaseMedia implements Serializable{
 		return variabelname;
 	}
 
+	
 	/**
 	 * @param variabelname the variabelname to set
 	 */
@@ -53,14 +62,42 @@ public class BaseMedia implements Serializable{
 		this.name = name;
 	}
 	
-	public String getData() {
-		return data;
+	/**
+	 * @param horizontal the horizontal to set
+	 */
+	public void setHorizontal(String horizontal) {
+		Horizontal = horizontal;
+	}
+
+	/**
+	 * @return the vertical
+	 */
+	public String getVertical() {
+		return Vertical;
+	}
+
+	/**
+	 * @param vertical the vertical to set
+	 */
+	public void setVertical(String vertical) {
+		Vertical = vertical;
 	}
 	
-	public void setData(String data) {
-		this.data = data;
+	//111111111111111111111111111111
+	public String getHPostion(){
+	    StringBuilder sb = new StringBuilder ();
+		
+	    sb.append (getVariabelname());
+		return sb.toString();
+		
 	}
-	
+	public String getVPostion(){
+	    StringBuilder sb = new StringBuilder ();
+		
+	    sb.append (getVariabelname());
+		return sb.toString();
+		
+	}
 	public String toString () {
 		StringBuilder sb = new StringBuilder ();
 		

@@ -1,27 +1,43 @@
 package miniprosjekt.variables;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 
 public class start extends JPanel {
-
+	JTextField hl;
 	JLabel jlbLabel1;
 	public start() {
 		
-		// Creating an Icon
+		  JTextField ny1 = new JTextField ("dddkkkkkkkkk");
+		  JLabel ny0 = new JLabel ("aaa");
+
 		
-		// 3 rows, 1 column Panel having Grid Layout
-		jlbLabel1 = new JLabel("Image with Text", JLabel.CENTER);
-		// We can position of the text, relative to the icon:
-		jlbLabel1.setVerticalTextPosition(JLabel.BOTTOM);
-		jlbLabel1.setHorizontalTextPosition(JLabel.CENTER);
-		
-		// Add labels to the Panel
-		add(jlbLabel1);
+		    GridBagLayout layout = new GridBagLayout ();
+		    GridBagConstraints gbc = new GridBagConstraints();
+		    setLayout (layout);
+		    gbc.gridx = 1;
+		    gbc.gridy = 1;
+		    gbc.gridwidth = 1;
+		    gbc.gridheight = 1;
+		    gbc.anchor = java.awt.GridBagConstraints.CENTER;
+		    gbc.fill = java.awt.GridBagConstraints.NONE;
+		    layout.setConstraints (ny1, gbc);
+		    add (ny1);
+		    gbc.gridx = 1;
+		    gbc.gridy = 1;
+		    gbc.gridwidth = 1;
+		    gbc.gridheight = 1;
+		    gbc.anchor = java.awt.GridBagConstraints.CENTER;
+		    gbc.fill = java.awt.GridBagConstraints.NONE;
+		    layout.setConstraints (ny0, gbc);
+		    add (ny0);
 		
 	}
 	public static void main(String[] args) {

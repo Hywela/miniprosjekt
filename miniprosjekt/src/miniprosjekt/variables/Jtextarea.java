@@ -10,5 +10,14 @@ public class Jtextarea extends BaseMedia {
 	
 
 	}
-
+	public String getAddToTable(){
+		return String.format( "%s (%s);","add",super.getAddToTable());
+	}
+	
+	public String getDec () {
+		return String.format( "%s %s;","JTextField",super.getDec());
+	}
+	public String toString () {
+		return String.format("%s %s %s(%s.%s);", "jtext" , super.toString(), "JTextField","JLabel","CENTER");
+	}
 }

@@ -7,18 +7,21 @@ import java.io.ObjectOutputStream;
 import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import miniprosjekt.variables.BaseMedia;
 import miniprosjekt.variables.Jbutton;
 import miniprosjekt.variables.Jtextfield;
+import miniprosjekt.variables.Jlabel;
+import miniprosjekt.variables.Jtextarea;
 
 
 @SuppressWarnings("serial")
 public class MyModel extends AbstractTableModel {
 	Vector<BaseMedia> data = new Vector<BaseMedia>();
-	String titles[] = { "Variabelnavn", "Tekst", "Rad","Rader", "Kolonne","Utfylling", "Forankring"};
+	String titles[] = { "Variabelnavn", "Tekst",  "Forankring"};
 	JFrame mainFrame;
 	
 	/*
@@ -39,18 +42,14 @@ public class MyModel extends AbstractTableModel {
 			case 0 : return ("").getClass();
 			case 1 : return ("").getClass();
 			case 2 : return ("").getClass();
-			case 3 : return ("").getClass();
-			case 4 : return ("").getClass();
-			case 5 : return ("").getClass();
-			case 6 : return ("").getClass();
-			case 7 : return (new Integer(0)).getClass();
+			case 3 : return (new Integer(0)).getClass();
 		}
 		return ("").getClass();
 	}
 	
 	@Override
 	public int getColumnCount() {
-		return 7;
+		return 3;
 	}
 
 	@Override
@@ -63,14 +62,25 @@ public class MyModel extends AbstractTableModel {
 		BaseMedia media = data.get(row);
 		if (col>0) {
 			switch (col) {
-				case 1 : return media.getName();
-				case 2 : return media.getData();
+				case 1 : return media.getVariabelname();
+				case 2 : return media.getName();
+				case 3 : return media.getName();
+				case 4 : return media.getName();
+				case 5 : return media.getName();
+				case 6 : return media.getName();
+				case 7 : return media.getName();
 			}
 		} else {
 			 if (media instanceof Jbutton)
 				return "JButton";
 			else if (media instanceof Jtextfield)
 				return "JTextField";
+			else if (media instanceof Jbutton)
+				return "JButton";
+			else if (media instanceof Jtextarea)
+				return "JTextArea";
+			else if (media instanceof Jlabel)
+				return "JLabel";
 			else if (media instanceof BaseMedia)
 				return "Velg et type Media";
 		}
@@ -92,9 +102,9 @@ public class MyModel extends AbstractTableModel {
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		BaseMedia media = data.get(rowIndex);
 		if (columnIndex==1)
-			media.setName ((String)aValue);
+			media.setVariabelname((String)aValue);
 		if (columnIndex==2)
-			media.setData ((String)aValue);
+			media.setVariabelname((String)aValue);
 		if (columnIndex==0) {
 			BaseMedia newMedia = null;
 			 if (((String)aValue).equals("JButton")) {
@@ -108,7 +118,11 @@ public class MyModel extends AbstractTableModel {
 			 } else if (((String)aValue).equals("JTextField")) {
 				newMedia = new Jtextfield (media);
 				//((Jtextfield)newMedia).setBowlPlacement(JOptionPane.showInputDialog (mainFrame, "I hvilket rom står gullfiskbollen?"));
-			}
+			 } else if (((String)aValue).equals("JLabel")) {
+					newMedia = new Jlabel(media);
+			 } else if (((String)aValue).equals("JTextArea")) {
+					newMedia = new Jtextarea (media);
+			 }
 			data.set(rowIndex, newMedia);
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
