@@ -11,32 +11,44 @@ import javax.swing.JTextField;
 
 
 public class start extends JPanel {
-	JTextField hl;	JTextField TODO;
+	JTextField hl;
 	JLabel jlbLabel1;
 	public start() {
 		
-	
-		
-		TODO = new JTextField("ddd");
-		  GridBagLayout layout = new GridBagLayout ();
-		GridBagConstraints gbc = new GridBagConstraints();
-		setLayout (layout);
+		  JTextField ny1 = new JTextField ("dddkkkkkkkkk");
+		  JLabel ny0 = new JLabel ("aaa");
 
-		gbc.gridx = 1;
-		gbc.gridy = 1;
-		gbc.gridwidth= 0;
-		gbc.gridheight = 1;
-		gbc.anchor = java.awt.GridBagConstraints.CENTER;
-		gbc.fill = java.awt.GridBagConstraints.CENTER;
-		 layout.setConstraints (TODO, gbc);
-		add (TODO);
+		
+		    GridBagLayout layout = new GridBagLayout ();
+		    GridBagConstraints gbc = new GridBagConstraints();
+		    setLayout (layout);
+		    gbc.gridx = 1;
+		    gbc.gridy = 1;
+		    gbc.gridwidth = 1;
+		    gbc.gridheight = 1;
+		    gbc.anchor = java.awt.GridBagConstraints.CENTER;
+		    gbc.fill = java.awt.GridBagConstraints.NONE;
+		    layout.setConstraints (ny1, gbc);
+		    add (ny1);
+		    gbc.gridx = 1;
+		    gbc.gridy = 1;
+		    gbc.gridwidth = 1;
+		    gbc.gridheight = 1;
+		    gbc.anchor = java.awt.GridBagConstraints.CENTER;
+		    gbc.fill = java.awt.GridBagConstraints.NONE;
+		    layout.setConstraints (ny0, gbc);
+		    add (ny0);
 		
 	}
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("jLabel Usage Demo");
-		
+		frame.addWindowListener(new WindowAdapter() {
 
-			
+			// Shows code to Add Window Listener
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+		});
 		frame.setContentPane(new start());
 		frame.pack();
 		frame.setVisible(true);

@@ -3,7 +3,6 @@ package miniprosjekt.GUI;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +30,6 @@ import javax.swing.JToolBar;
 
 import miniprosjekt.model.MyModel;
 import miniprosjekt.variables.BaseMedia;
-import miniprosjekt.variables.start;
 
 @SuppressWarnings("serial")
 public class ButtonLayout extends JFrame {
@@ -40,9 +38,11 @@ public class ButtonLayout extends JFrame {
 	private JToolBar toolbar = new JToolBar ();
 	private String layoutType[] = {"JLabel", "JTextField", "JTextArea", "JButton" };
 	private JComboBox<String> animalTypeEditor = new JComboBox<String> (layoutType);
-	private String alignments[] = {"Left", "Right", "Top", "Bottom" };
+	private String alignments[] = {"Left", "Top-Left", "Bottom-Left", "Right", "Top-Right", "Bottom-Right", "Top", "Bottom" };
 	private JComboBox<String> alignmentEditor = new JComboBox<String> (alignments);
-		
+	private String size[] = {"Wrap Content", "Fill Parrent", "Full width", "Full Hight" };
+	private JComboBox<String> sizeEditor = new JComboBox<String> (size);
+	
     
 	public ButtonLayout () {
 		super ("Velkommen Media Planleggeren");
@@ -53,6 +53,7 @@ public class ButtonLayout extends JFrame {
 		
 		add (new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(animalTypeEditor));
+		table.getColumnModel().getColumn(7).setCellEditor(new DefaultCellEditor(sizeEditor));
 		table.getColumnModel().getColumn(8).setCellEditor(new DefaultCellEditor(alignmentEditor));
 		
 		
@@ -69,7 +70,7 @@ public class ButtonLayout extends JFrame {
 		addAnimal.setToolTipText("Legg til en Serie/Film");
 		addAnimal.addActionListener(new ActionListener (){
 			public void actionPerformed (ActionEvent ae) {
-				dataModel.addMedia();
+				dataModel.addAnimal();
 			}
 		});
 		toolbar.add (load);
@@ -171,21 +172,10 @@ public class ButtonLayout extends JFrame {
 					bw.write(layoutType.get(i).getAddToTable());
 				}
 				bw.write("}//end of Constructor");
-				bw.newLine();
-				bw.write("public static void main(String[] args) {");
-				bw.newLine();
-				bw.write("JFrame frame = new JFrame(\"Example\");");
-				bw.newLine();
-				bw.write("frame.setContentPane(new example());");
-				bw.newLine();
-				bw.write("frame.pack();");
-				bw.newLine();
-				bw.write("frame.setVisible(true);}");
-				bw.newLine();
 				bw.write("}//end of file");
 				bw.close();
 			} catch (IOException ioe) {
-				System.err.println ("Feil under skriving av Kildekode.");
+				System.err.println ("Feil under skriving av rapporten.");
 			}
 		}
 	}
@@ -254,7 +244,7 @@ public class ButtonLayout extends JFrame {
         //edit menu button actions
         newItemAction.addActionListener(new ActionListener (){
 			public void actionPerformed (ActionEvent ae) {
-				dataModel.addMedia();
+				dataModel.addAnimal();
 			}
 		});
       

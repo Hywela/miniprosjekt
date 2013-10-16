@@ -20,9 +20,8 @@ public class BaseMedia implements Serializable{
 	rad = 1;
 	kolonne = 1;
 	rader= 1;
-	kolonner =1;
-	text = "Insert Text";
-	variabelname="";
+		
+		variabelname="TODO";
 	}
 
 	// Vi kan opprette et nytt dyr og ta vare på egenskapene som alle dyr har til felles
@@ -133,8 +132,8 @@ public class BaseMedia implements Serializable{
 				"%ngbc.gridy = %d;" +
 				"%ngbc.gridwidth= %d;" +
 				"%ngbc.gridheight = %d;" +
-				"%ngbc.anchor = java.awt.GridBagConstraints.CENTER;"+//string
-				"%ngbc.fill = java.awt.GridBagConstraints.CENTER;"+//string
+				"%ngbc.anchor = java.awt.GridBagConstraints."+//string
+				"%ngbc.fill = java.awt.GridBagConstraints."+//string
 				"%n layout.setConstraints (%s, gbc);"
 				,getKolonne(),getRad(),getKolonner(),getKolonne(),getVariabelname() );
 	}
