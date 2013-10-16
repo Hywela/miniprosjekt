@@ -15,7 +15,7 @@ public class Jlabel extends BaseMedia{
 
 	//Declere the variable
 	public String getDec() {
-		return String.format("%s %s;", "JTextField", super.getDec());
+		return String.format("%s %s;", "JLabel", super.getDec());
 	}
 //Say new about the variable
 	public String toString() {
