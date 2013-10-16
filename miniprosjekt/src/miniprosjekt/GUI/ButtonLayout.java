@@ -1,8 +1,6 @@
 package miniprosjekt.GUI;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -15,11 +13,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Vector;
 
-import javax.swing.ButtonGroup;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -27,8 +23,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -52,50 +46,7 @@ public class ButtonLayout extends JFrame {
 		dataModel.setTableFrame(this);
 		JTextField mm = new JTextField();
 		
-		 JMenuBar menuBar = new JMenuBar();
-		 add (new JButton(), BorderLayout.CENTER);
-	        // Add the menubar to the frame
-	        setJMenuBar(menuBar);
-	        
-	        // Define and add two drop down menu to the menubar
-	        JMenu fileMenu = new JMenu("File");
-	        JMenu editMenu = new JMenu("Edit");
-	        menuBar.add(fileMenu);
-	        menuBar.add(editMenu);
-	        
-	        // Create and add simple menu item to one of the drop down menu
-	        JMenuItem newAction = new JMenuItem("New");
-	        JMenuItem openAction = new JMenuItem("Open");
-	        JMenuItem exitAction = new JMenuItem("Exit");
-	        JMenuItem cutAction = new JMenuItem("Cut");
-	        JMenuItem copyAction = new JMenuItem("Copy");
-	        JMenuItem pasteAction = new JMenuItem("Paste");
-	        
-	        // Create and add CheckButton as a menu item to one of the drop down
-	        // menu
-	        JCheckBoxMenuItem checkAction = new JCheckBoxMenuItem("Check Action");
-	        // Create and add Radio Buttons as simple menu items to one of the drop
-	        // down menu
-	        JRadioButtonMenuItem radioAction1 = new JRadioButtonMenuItem(
-	                "Radio Button1");
-	        JRadioButtonMenuItem radioAction2 = new JRadioButtonMenuItem(
-	                "Radio Button2");
-	        // Create a ButtonGroup and add both radio Button to it. Only one radio
-	        // button in a ButtonGroup can be selected at a time.
-	        ButtonGroup bg = new ButtonGroup();
-	        bg.add(radioAction1);
-	        bg.add(radioAction2);
-	        fileMenu.add(newAction);
-	        fileMenu.add(openAction);
-	        fileMenu.add(checkAction);
-	        fileMenu.addSeparator();
-	        fileMenu.add(exitAction);
-	        editMenu.add(cutAction);
-	        editMenu.add(copyAction);
-	        editMenu.add(pasteAction);
-	        editMenu.addSeparator();
-	        editMenu.add(radioAction1);
-	        editMenu.add(radioAction2);
+		fileMenu();
 		
 		add (new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(animalTypeEditor));
@@ -231,5 +182,68 @@ public class ButtonLayout extends JFrame {
 	public static void main(String[] args) {
 		new ButtonLayout();
 
+	}
+	
+	public void fileMenu(){
+		
+		JMenuBar menuBar = new JMenuBar();
+        
+        // Add the menubar to the frame
+        setJMenuBar(menuBar);
+        
+        // Define and add two drop down menu to the menubar
+        JMenu fileMenu = new JMenu("File");
+        JMenu editMenu = new JMenu("Edit");
+        menuBar.add(fileMenu);
+        menuBar.add(editMenu);
+        
+        // Create and add simple menu item to one of the drop down menu
+        JMenuItem newAction = new JMenuItem("New");
+        JMenuItem openAction = new JMenuItem("Open");
+        JMenuItem saveAction = new JMenuItem("Save");
+        JMenuItem exitAction = new JMenuItem("Exit");
+        JMenuItem genAction = new JMenuItem("Generate Java");
+        JMenuItem newItemAction = new JMenuItem("New Item");
+        
+        //file menu buttons
+        fileMenu.add(newAction);
+        fileMenu.add(openAction);
+        fileMenu.add(saveAction);
+        fileMenu.addSeparator();
+        fileMenu.add(genAction);
+        fileMenu.add(exitAction);
+        
+        //edit menu buttons
+        editMenu.add(newItemAction);
+        
+        
+        //file menu actions
+        newAction.addActionListener(new ActionListener (){
+			public void actionPerformed (ActionEvent ae) {
+				//TODO: add action for new file
+			}
+		});
+        
+        openAction.addActionListener(new Load());
+        
+        saveAction.addActionListener(new Save());
+		
+        genAction.addActionListener(new SaveReport());
+        
+        exitAction.addActionListener(new ActionListener (){
+			public void actionPerformed (ActionEvent ae) {
+				System.exit(0);
+			}
+		});
+        
+        
+        //edit menu button actions
+        newItemAction.addActionListener(new ActionListener (){
+			public void actionPerformed (ActionEvent ae) {
+				dataModel.addAnimal();
+			}
+		});
+      
+        
 	}
 }
