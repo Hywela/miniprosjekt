@@ -157,15 +157,13 @@ public class ButtonLayout extends JFrame {
 				bw.newLine();
 				bw.write("GridBagConstraints gbc = new GridBagConstraints();");
 				bw.newLine();
+				bw.write("setLayout (layout);");
+				bw.newLine();
+			
 				for (int i=0; i<layoutType.size(); i++) {
-					
-					bw.write(layoutType.get(i).getAddToTable());
-						bw.newLine();
-					}
-				for (int i=0; i<layoutType.size(); i++) {
-					bw.write(layoutType.get(i).getHPostion());
+					bw.write(layoutType.get(i).getGridBagPara());
 					bw.newLine();
-					bw.write(layoutType.get(i).getVPostion());
+					bw.write(layoutType.get(i).getAddToTable());
 				}
 				bw.write("}//end of Constructor");
 				bw.write("}//end of file");

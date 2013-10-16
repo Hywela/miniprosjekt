@@ -21,7 +21,8 @@ import miniprosjekt.variables.Jtextarea;
 @SuppressWarnings("serial")
 public class MyModel extends AbstractTableModel {
 	Vector<BaseMedia> data = new Vector<BaseMedia>();
-	String titles[] = { "Variabelnavn", "Tekst",  "Forankring"};
+	String titles[] = { "Type","VariabelNavn", "Tekst", "Rad", "Kolonne","Rader" ,
+			"Kolonner","Utfylling", "Forankring"};
 	JFrame mainFrame;
 	
 	/*
@@ -43,13 +44,18 @@ public class MyModel extends AbstractTableModel {
 			case 1 : return ("").getClass();
 			case 2 : return ("").getClass();
 			case 3 : return (new Integer(0)).getClass();
+			case 4 : return (new Integer(0)).getClass();
+			case 5 : return (new Integer(0)).getClass();
+			case 6 : return (new Integer(0)).getClass();
+			case 7 : return ("").getClass();
+			case 8 : return (new Integer(0)).getClass();
 		}
 		return ("").getClass();
 	}
 	
 	@Override
 	public int getColumnCount() {
-		return 3;
+		return 9;
 	}
 
 	@Override
@@ -63,12 +69,12 @@ public class MyModel extends AbstractTableModel {
 		if (col>0) {
 			switch (col) {
 				case 1 : return media.getVariabelname();
-				case 2 : return media.getName();
-				case 3 : return media.getName();
-				case 4 : return media.getName();
-				case 5 : return media.getName();
-				case 6 : return media.getName();
-				case 7 : return media.getName();
+				case 2 : return media.getText();
+				case 3 : return media.getRad();
+				case 4 : return media.getKolonne();
+				case 5 : return media.getRader();
+				case 6 : return media.getKolonner();
+				case 7 : return media.getVariabelname();
 			}
 		} else {
 			 if (media instanceof Jbutton)
@@ -104,7 +110,21 @@ public class MyModel extends AbstractTableModel {
 		if (columnIndex==1)
 			media.setVariabelname((String)aValue);
 		if (columnIndex==2)
-			media.setVariabelname((String)aValue);
+			media.setText((String)aValue);
+		if (columnIndex==3)
+			media.setRad((int)aValue);
+		if (columnIndex==4)
+			media.setKolonne((int)aValue);
+		if (columnIndex==5)
+			media.setRader((int)aValue);
+		if (columnIndex==6)
+			media.setKolonner((int)aValue);
+		if (columnIndex==7)
+			media.setKolonner((int)aValue);
+		
+		
+		
+		
 		if (columnIndex==0) {
 			BaseMedia newMedia = null;
 			 if (((String)aValue).equals("JButton")) {
