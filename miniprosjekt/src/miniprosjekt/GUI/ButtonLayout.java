@@ -70,7 +70,7 @@ public class ButtonLayout extends JFrame {
 		addAnimal.setToolTipText("Legg til en Serie/Film");
 		addAnimal.addActionListener(new ActionListener (){
 			public void actionPerformed (ActionEvent ae) {
-				dataModel.addAnimal();
+				dataModel.addMedia();
 			}
 		});
 		toolbar.add (load);
@@ -172,8 +172,19 @@ public class ButtonLayout extends JFrame {
 					bw.write(layoutType.get(i).getAddToTable());
 				}
 				bw.write("}//end of Constructor");
-				bw.write("}//end of file");
-				bw.close();
+				       bw.newLine();
+				      bw.write("public static void main(String[] args) {");
+				      bw.newLine();
+				    bw.write("JFrame frame = new JFrame(\"Example\");");
+			      bw.newLine();
+			      bw.write("frame.setContentPane(new example());");
+			        bw.newLine();
+			      bw.write("frame.pack();");
+			       bw.newLine();
+			        bw.write("frame.setVisible(true);}");
+				       bw.newLine();
+				         bw.write("}//end of file");
+				         bw.close(); 
 			} catch (IOException ioe) {
 				System.err.println ("Feil under skriving av rapporten.");
 			}
@@ -244,7 +255,7 @@ public class ButtonLayout extends JFrame {
         //edit menu button actions
         newItemAction.addActionListener(new ActionListener (){
 			public void actionPerformed (ActionEvent ae) {
-				dataModel.addAnimal();
+				dataModel.addMedia();
 			}
 		});
       

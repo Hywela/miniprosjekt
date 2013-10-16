@@ -18,6 +18,6 @@ public class Jtextarea extends BaseMedia {
 		return String.format( "%s %s;","JTextField",super.getDec());
 	}
 	public String toString () {
-		return String.format("%s %s %s(%s.%s);", "jtext" , super.toString(), "JTextField","JLabel","CENTER");
-	}
+		return String.format("%s %s %s(\"%s\");", super.getVariabelname(), super.toString(),
+			       "JTextArea", super.getText()); }
 }

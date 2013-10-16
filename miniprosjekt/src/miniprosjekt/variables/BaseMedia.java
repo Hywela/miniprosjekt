@@ -160,10 +160,12 @@ public class BaseMedia implements Serializable{
 				"%ngbc.gridy = %d;" +
 				"%ngbc.gridwidth= %d;" +
 				"%ngbc.gridheight = %d;" +
-				"%ngbc.anchor = java.awt.GridBagConstraints."+//string
-				"%ngbc.fill = java.awt.GridBagConstraints."+//string
+				"%ngbc.anchor = java.awt.GridBagConstraints.%s;"+//string
+				"%ngbc.fill = java.awt.GridBagConstraints.%s;"+//string
 				"%n layout.setConstraints (%s, gbc);"
-				,getKolonne(),getRad(),getKolonner(),getKolonne(),getVariabelname() );
+				,getKolonne(),getRad(),getKolonner(),getKolonne(),getForankring(),
+				getUtfylling(),
+				getVariabelname() );
 	}
 	
 	public String toString () {

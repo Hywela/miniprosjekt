@@ -19,7 +19,7 @@ public class Jlabel extends BaseMedia{
 	}
 //Say new about the variable
 	public String toString() {
-		return String.format("%s %s %s(\"%s\");", "jtext", super.toString(),
-				"JTextField", super.getVariabelname());
+		 return String.format("%s %s %s(\"%s\");", super.getVariabelname(), super.toString(),
+				      "JLabel", super.getText());
 	}
 }
