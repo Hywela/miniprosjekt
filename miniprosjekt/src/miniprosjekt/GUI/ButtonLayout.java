@@ -1,6 +1,10 @@
 package miniprosjekt.GUI;
 
+
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -21,6 +25,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -28,6 +33,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
+import javax.swing.table.TableCellRenderer;
 
 import miniprosjekt.model.MyModel;
 import miniprosjekt.variables.BaseMedia;
@@ -36,9 +42,11 @@ import miniprosjekt.variables.Language;
 @SuppressWarnings("serial")
 public class ButtonLayout extends JFrame {
 	JFrame f;
+	
+	TableCellRenderer weirdRenderer;
 	private Editor editor;
 	private MyModel dataModel = new MyModel();
-	private JTable table = new JTable(dataModel);
+	private JTable table= new JTable(dataModel);
 	private JToolBar toolbar = new JToolBar();
 	private String layoutType[] = { "JLabel", "JTextField", "JTextArea",
 			"JButton" };
@@ -53,8 +61,13 @@ public class ButtonLayout extends JFrame {
 
 	public ButtonLayout() {
 		super(Language.getMsg("window_header"));
+		
+	
+		    
 		dataModel.setTableFrame(this);
 		fileMenu();
+		
+		
 		add(new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0)
 				.setCellEditor(new DefaultCellEditor(animalTypeEditor));
@@ -62,7 +75,9 @@ public class ButtonLayout extends JFrame {
 				.setCellEditor(new DefaultCellEditor(sizeEditor));
 		table.getColumnModel().getColumn(8)
 				.setCellEditor(new DefaultCellEditor(alignmentEditor));
-
+		TableCellRenderer renderer = table.getTableHeader().getDefaultRenderer();
+		table.getColumnModel().getColumn(0).setCellRenderer(new ColorRenderer(renderer));
+		
 		JButton load = new JButton(new ImageIcon(getClass().getResource(
 				"/images/file.png")));
 		load.setToolTipText(Language.getMsg("open_file"));
@@ -90,12 +105,13 @@ public class ButtonLayout extends JFrame {
 		toolbar.addSeparator();
 		toolbar.add(addAnimal);
 		add(toolbar, BorderLayout.NORTH);
+		
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		table.addMouseListener(new RightClicker());
 	}
-
+	
 	private class RightClicker extends MouseAdapter {
 		public void mousePressed(MouseEvent e) {
 			if (e.isMetaDown()) {

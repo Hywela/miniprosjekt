@@ -1,5 +1,6 @@
 package miniprosjekt.model;
 
+
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -21,6 +22,10 @@ import miniprosjekt.variables.Language;
 
 @SuppressWarnings("serial")
 public class MyModel extends AbstractTableModel {
+	// Still needs to hold the column titles
+	
+		// Using a vector to store the data, this can be anything really
+	
 	int i=0; 
 	Vector<BaseMedia> data = new Vector<BaseMedia>();
 	String titles[] = { Language.getMsg("type"),Language.getMsg("variable_name"), Language.getMsg("text"), Language.getMsg("row"), Language.getMsg("column"),
@@ -31,6 +36,7 @@ public class MyModel extends AbstractTableModel {
 	/*
 	 * Sets the frame that contains the table for this table model
 	 */
+	
 	public void setTableFrame (JFrame f) {
 		mainFrame = f;
 	}
@@ -50,7 +56,8 @@ public class MyModel extends AbstractTableModel {
 			case 4 : return (new Integer(0)).getClass();
 			case 5 : return (new Integer(0)).getClass();
 			case 6 : return (new Integer(0)).getClass();
-			case 7 : return ("").getClass();
+			
+			case 7 :  return ("").getClass();
 			case 8 : return ("").getClass();
 		}
 		return ("").getClass();
@@ -100,6 +107,7 @@ public class MyModel extends AbstractTableModel {
 	}
 	
 	public void addMedia () {
+		
 		BaseMedia media = new BaseMedia ();
 		data.add (media);
 		fireTableRowsInserted(data.size(), data.size());
@@ -114,6 +122,12 @@ public class MyModel extends AbstractTableModel {
 	
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		
+	   
+	    
+		
+		
+		
 		BaseMedia media = data.get(rowIndex);
 		if (columnIndex==1)
 			media.setVariabelname((String)aValue);
