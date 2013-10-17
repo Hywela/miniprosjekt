@@ -11,8 +11,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.Vector;
 
+import javax.print.attribute.standard.OutputDeviceAssigned;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -124,15 +126,11 @@ public class ButtonLayout extends JFrame {
 			
 		}
 	}
-
+// TODO:: bytt ut example med et generert navn
 	class SaveReport implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			JFileChooser chooser = new JFileChooser(new File("."));
-			chooser.setFileSelectionMode (JFileChooser.FILES_ONLY);
-			if (chooser.showSaveDialog(ButtonLayout.this)==JFileChooser.CANCEL_OPTION)
-				return;
-			File f = chooser.getSelectedFile();
+			File f = new File("example.java");
 			if (f.exists())
 				if (JOptionPane.showConfirmDialog(ButtonLayout.this, "Filen finnes, overskrive", "Bekreft", JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION)
 					return;

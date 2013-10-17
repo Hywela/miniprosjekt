@@ -1,9 +1,0 @@
-package miniprosjekt.variables;import java.awt.GridLayout;import java.awt.event.WindowAdapter;import java.awt.event.WindowEvent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-public class example extends JPanel {
-JTextField TODO;
-public example() {
-jtext = new JTextField(JLabel.CENTER);
-addTODO (addTODO);
-}//end of Constructor}//end of file

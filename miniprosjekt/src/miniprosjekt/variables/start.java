@@ -35,7 +35,7 @@ public class start extends JPanel {
 		    gbc.gridwidth = 1;
 		    gbc.gridheight = 1;
 		    gbc.anchor = java.awt.GridBagConstraints.CENTER;
-		    gbc.fill = java.awt.GridBagConstraints.;
+		    gbc.fill = java.awt.GridBagConstraints.CENTER;
 		    layout.setConstraints (ny0, gbc);
 		    add (ny0);
 		
