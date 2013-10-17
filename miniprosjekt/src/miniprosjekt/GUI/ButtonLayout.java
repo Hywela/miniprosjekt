@@ -11,10 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.util.Vector;
 
-import javax.print.attribute.standard.OutputDeviceAssigned;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,11 +25,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 import miniprosjekt.model.MyModel;
 import miniprosjekt.variables.BaseMedia;
+import miniprosjekt.variables.Language;
 
 @SuppressWarnings("serial")
 public class ButtonLayout extends JFrame {
@@ -40,19 +38,15 @@ public class ButtonLayout extends JFrame {
 	private JToolBar toolbar = new JToolBar ();
 	private String layoutType[] = {"JLabel", "JTextField", "JTextArea", "JButton" };
 	private JComboBox<String> animalTypeEditor = new JComboBox<String> (layoutType);
-	private String alignments[] = {"WEST", "NORTHWEST", "SOUTHWEST", "EAST", "NORTHEAST", "SOUTHEAST", "NORTH", "SOUTH", "CENTER" };
+	private String alignments[] = {"WEST", "NORTHWEST", "SOUTHWEST", "EAST", "NORTHEAST", "SOUTHEAST", "NORTH", "SOUTH", "CENTER"};
 	private JComboBox<String> alignmentEditor = new JComboBox<String> (alignments);
-	private String size[] = {"NONE", "BOTH", "HORIZONTAL", "VERTICAL" };
+	private String size[] = {"NONE", "BOTH", "HORIZONTAL", "VERTICAL"};
 	private JComboBox<String> sizeEditor = new JComboBox<String> (size);
-	
     
 	public ButtonLayout () {
-		super ("Velkommen Media Planleggeren");
+		super (Language.getMsg("window_header"));
 		dataModel.setTableFrame(this);
-		JTextField mm = new JTextField();
-		
 		fileMenu();
-		
 		add (new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(animalTypeEditor));
 		table.getColumnModel().getColumn(7).setCellEditor(new DefaultCellEditor(sizeEditor));
@@ -60,16 +54,16 @@ public class ButtonLayout extends JFrame {
 		
 		
 		JButton load = new JButton (new ImageIcon(getClass().getResource("/images/file.png")));
-		load.setToolTipText("Last inn en dyrehage");
+		load.setToolTipText(Language.getMsg("open_file"));
 		load.addActionListener(new Load());
 		JButton save = new JButton (new ImageIcon(getClass().getResource("/images/filesave.png")));
-		save.setToolTipText("Lage en dyrehage");
+		save.setToolTipText(Language.getMsg("save_file"));
 		save.addActionListener(new Save());
 		JButton saveReport = new JButton (new ImageIcon(getClass().getResource("/images/fileexport.png")));
-		saveReport.setToolTipText("Skriv ut en Show liste");
+		saveReport.setToolTipText(Language.getMsg("export"));
 		saveReport.addActionListener(new SaveReport());
 		JButton addAnimal = new JButton (new ImageIcon(getClass().getResource("/images/insert_table_row.png")));
-		addAnimal.setToolTipText("Legg til en Serie/Film");
+		addAnimal.setToolTipText(Language.getMsg("add"));
 		addAnimal.addActionListener(new ActionListener (){
 			public void actionPerformed (ActionEvent ae) {
 				dataModel.addMedia();
@@ -114,7 +108,7 @@ public class ButtonLayout extends JFrame {
 				return;
 			File f = chooser.getSelectedFile();
 			if (f.exists())
-				if (JOptionPane.showConfirmDialog(ButtonLayout.this, "Filen finnes, overskrive", "Bekreft", JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION)
+				if (JOptionPane.showConfirmDialog(ButtonLayout.this, Language.getMsg("overwrite_file"), Language.getMsg("confirm"), JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION)
 					return;
 			try {
 				ObjectOutputStream oos = new ObjectOutputStream (new FileOutputStream(f));
@@ -132,7 +126,7 @@ public class ButtonLayout extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			File f = new File("example.java");
 			if (f.exists())
-				if (JOptionPane.showConfirmDialog(ButtonLayout.this, "Filen finnes, overskrive", "Bekreft", JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION)
+				if (JOptionPane.showConfirmDialog(ButtonLayout.this, Language.getMsg("overwrite_file"), Language.getMsg("confirm"), JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION)
 					return;
 			try {
 				BufferedWriter bw = new BufferedWriter (new FileWriter (f));
@@ -193,6 +187,7 @@ public class ButtonLayout extends JFrame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		Language.setLocale(args);
 		new ButtonLayout();
 
 	}
@@ -205,18 +200,18 @@ public class ButtonLayout extends JFrame {
         setJMenuBar(menuBar);
         
         // Define and add two drop down menu to the menubar
-        JMenu fileMenu = new JMenu("File");
-        JMenu editMenu = new JMenu("Edit");
+        JMenu fileMenu = new JMenu(Language.getMsg("file"));
+        JMenu editMenu = new JMenu(Language.getMsg("edit"));
         menuBar.add(fileMenu);
         menuBar.add(editMenu);
         
         // Create and add simple menu item to one of the drop down menu
-        JMenuItem newAction = new JMenuItem("New");
-        JMenuItem openAction = new JMenuItem("Open");
-        JMenuItem saveAction = new JMenuItem("Save");
-        JMenuItem exitAction = new JMenuItem("Exit");
-        JMenuItem genAction = new JMenuItem("Generate Java");
-        JMenuItem newItemAction = new JMenuItem("New Item");
+        JMenuItem newAction = new JMenuItem(Language.getMsg("new"));
+        JMenuItem openAction = new JMenuItem(Language.getMsg("open_file"));
+        JMenuItem saveAction = new JMenuItem(Language.getMsg("save_file"));
+        JMenuItem exitAction = new JMenuItem(Language.getMsg("exit"));
+        JMenuItem genAction = new JMenuItem(Language.getMsg("export"));
+        JMenuItem newItemAction = new JMenuItem(Language.getMsg("add"));
         
         //file menu buttons
         fileMenu.add(newAction);
