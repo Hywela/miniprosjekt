@@ -24,7 +24,7 @@ public class Jbutton extends BaseMedia {
 
 	//Declere the variable
 	public String getDec() {
-		return String.format("%s %s;", "JButton", super.getDec());
+		return String.format("%s %s;", super.getType(), super.getDec());
 	}
 //Say new about the variable
 	public String toString() {

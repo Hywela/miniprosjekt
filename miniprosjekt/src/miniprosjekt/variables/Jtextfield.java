@@ -30,15 +30,15 @@ public class Jtextfield extends BaseMedia {
 	
 	//Declere the variable
 	public String getDec() {
-		return String.format("%s %s;", "JTextField", super.getDec());
+		return String.format("%s %s;", super.getType(), super.getDec());
 	}
 //Say new about the variable
 	public String toString() {
 		if(rows ==0){
 		return String.format("%s %s %s(\"%s\");", super.getVariabelname(), super.toString(),
-				"JTextField", super.getText());
+				super.getType(), super.getText());
 		}else return String.format("%s %s %s(\"%s\",%d);", super.getVariabelname(), super.toString(),
-				"JTextField", super.getText(), rows);
+				super.getType(), super.getText(), rows);
 	}
 public void setSPValues(int h, int w, int r, int c){
 		height= h;

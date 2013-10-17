@@ -53,15 +53,15 @@ boolean JscrollPanel =true, WordWrapping = true;
 	}
 	
 	public String getDec () {
-		return String.format( "%s %s;","JTextArea",super.getDec());
+		return String.format( "%s %s;",super.getType(),super.getDec());
 	}
 	public String toString () {
 		if (rows >0 ){
 			return String.format("%s %s %s(\"%s\",%d,%d);", super.getVariabelname(), super.toString(),
-				       "JTextArea", super.getText(), rows, colums); 
+					super.getType(), super.getText(), rows, colums); 
 		}else{
 			return String.format("%s %s %s(\"%s\");", super.getVariabelname(), super.toString(),
-			       "JTextArea", super.getText()); 
+					super.getType(), super.getText()); 
 			}
 }
 	public void setSPValues(int h, int w, int r, int c){

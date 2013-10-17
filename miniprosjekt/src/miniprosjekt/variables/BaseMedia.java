@@ -2,7 +2,7 @@ package miniprosjekt.variables;
 
 import java.io.Serializable;
 
-// Alle dyr har det til felles at de har et navn og en alder
+
 public class BaseMedia implements Serializable{
 	
 
@@ -65,12 +65,16 @@ public class BaseMedia implements Serializable{
 	kolonne = 1;
 	rader= 1;
 	variabelname="";
-	fill = "CENTER";
-	alignment = "NONE";
+	fill = "NONE";
+	alignment = "CENTER";
+	text="Insert texst";
+	type="JLabel";
 	}
 
 	// Vi kan opprette et nytt dyr og ta vare på egenskapene som alle dyr har til felles
 	public BaseMedia (BaseMedia media) {
+		fill = media.fill;
+		alignment = media.alignment;
 		text = media.text;
 		rad = media.rad;
 		rader = media.rader;
@@ -178,7 +182,7 @@ public class BaseMedia implements Serializable{
 				"%ngbc.gridy = %d;" +
 				"%ngbc.gridwidth= %d;" +
 				"%ngbc.gridheight = %d;" +
-				"%ngbc.anchor = java.awt.GridBagConstraints.%s;"+//string
+				"%ngbc.anchor = java.awt.GridBagConstraints.%s;"+
 				"%ngbc.fill = java.awt.GridBagConstraints.%s;"
 				,getKolonne(),getRad(),getKolonner(),getKolonne(),getAlignment(),
 				getFill());
