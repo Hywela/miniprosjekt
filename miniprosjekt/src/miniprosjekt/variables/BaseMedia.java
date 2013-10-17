@@ -8,13 +8,15 @@ public class BaseMedia implements Serializable{
 
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String text;
 	private String utfylling;
 	private String forankring;
 	int rad, kolonne,kolonner, rader;
 
 	private String variabelname;
+	
+	
 	
 	/**
 	 * @return the forankring
@@ -48,6 +50,7 @@ public class BaseMedia implements Serializable{
 	rad = 1;
 	kolonne = 1;
 	rader= 1;
+
 		
 		variabelname="TODO";
 	}

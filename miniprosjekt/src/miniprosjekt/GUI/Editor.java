@@ -78,7 +78,7 @@ public class Editor extends JPanel {
 	public void setAddAction (ActionListener al) {
 		add.addActionListener(al);
 	}
-/*	
+
 	public static void main(String[] args) {
 		JFrame f = new JFrame ();
 		Editor ae = new Editor();
@@ -86,7 +86,7 @@ public class Editor extends JPanel {
 		f.pack ();
 		f.setVisible(true);
 	}
-*/
+
 	public void clear() {
 		type.setSelectedIndex(0);
 		name.setText("");
