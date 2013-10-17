@@ -16,14 +16,16 @@ import miniprosjekt.variables.Jbutton;
 import miniprosjekt.variables.Jtextfield;
 import miniprosjekt.variables.Jlabel;
 import miniprosjekt.variables.Jtextarea;
+import miniprosjekt.variables.Language;
 
 
 @SuppressWarnings("serial")
 public class MyModel extends AbstractTableModel {
 	int i=0; 
 	Vector<BaseMedia> data = new Vector<BaseMedia>();
-	String titles[] = { "Type","VariabelNavn", "Tekst", "Rad", "Kolonne","Rader" ,
-			"Kolonner","Utfylling", "Forankring"};
+	String titles[] = { Language.getMsg("type"),Language.getMsg("variable_name"), Language.getMsg("text"), Language.getMsg("row"), Language.getMsg("column"),
+						Language.getMsg("rows") , Language.getMsg("columns"), Language.getMsg("fill"), Language.getMsg("alignment")};
+
 	JFrame mainFrame;
 	
 	/*
