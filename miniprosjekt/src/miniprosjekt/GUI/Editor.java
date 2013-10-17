@@ -79,7 +79,9 @@ public class Editor extends JPanel {
 		add.addActionListener(al);
 	}
 
-	public static void main(String[] args) {
+	
+
+	public void test() {
 		JFrame f = new JFrame ();
 		Editor ae = new Editor();
 		f.add (ae);

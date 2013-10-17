@@ -11,9 +11,16 @@ public class Jbutton extends BaseMedia {
 		super (media);
 	}
 
+	public String getGridBagPara(){
+		String temp = "";
+		
+		
+		return String.format("%s%s%n%s(%s,gbc);", super.getGridBagPara(),temp ,"layout.setConstraints",
+				super.getVariabelname());
 
+	}
 	public String getAddToTable() {
-		return String.format("%s (%s);", "add", super.getAddToTable());
+		return String.format( "%s (%s);","add",super.getVariabelname());
 	}
 
 	//Declere the variable

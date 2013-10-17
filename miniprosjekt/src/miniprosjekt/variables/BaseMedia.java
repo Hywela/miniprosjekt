@@ -9,7 +9,7 @@ public class BaseMedia implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private String text;
+	private String text="";
 	private String utfylling;
 	private String forankring;
 	int rad, kolonne,kolonner, rader;
@@ -50,9 +50,9 @@ public class BaseMedia implements Serializable{
 	rad = 1;
 	kolonne = 1;
 	rader= 1;
-
-		
-		variabelname="TODO";
+	variabelname="";
+	utfylling = "CENTER";
+	forankring = "NONE";
 	}
 
 	// Vi kan opprette et nytt dyr og ta vare på egenskapene som alle dyr har til felles
@@ -158,17 +158,16 @@ public class BaseMedia implements Serializable{
 	}
 	
 	//111111111111111111111111111111
+	
 	public String getGridBagPara(){
 		return String.format( "%ngbc.gridx = %d;" +
 				"%ngbc.gridy = %d;" +
 				"%ngbc.gridwidth= %d;" +
 				"%ngbc.gridheight = %d;" +
 				"%ngbc.anchor = java.awt.GridBagConstraints.%s;"+//string
-				"%ngbc.fill = java.awt.GridBagConstraints.%s;"+//string
-				"%n layout.setConstraints (%s, gbc);"
+				"%ngbc.fill = java.awt.GridBagConstraints.%s;"
 				,getKolonne(),getRad(),getKolonner(),getKolonne(),getForankring(),
-				getUtfylling(),
-				getVariabelname() );
+				getUtfylling());
 	}
 	
 	public String toString () {
@@ -190,7 +189,7 @@ public class BaseMedia implements Serializable{
 		
 		StringBuilder sb = new StringBuilder ();
 		
-		sb.append (getVariabelname());
+		
 		
 		
 		return sb.toString();

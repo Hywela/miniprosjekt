@@ -3,6 +3,8 @@ package miniprosjekt.GUI;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -79,8 +81,20 @@ public class ButtonLayout extends JFrame {
 		pack ();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible (true);
+		table.addMouseListener(new RightClicker());
 	}
-
+	 private class RightClicker extends MouseAdapter {  
+	        public void mousePressed( MouseEvent e ) {  
+	            if ( e.isMetaDown() ) {  
+	            	int rowcheck = table.getSelectedRow();
+	            	if (rowcheck > -1) {
+	                System.out.println( rowcheck); 
+	                Editor temp = new Editor();
+	                temp.test();
+	            	}
+	            }  
+	        } 
+	  }
 	class Load implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
