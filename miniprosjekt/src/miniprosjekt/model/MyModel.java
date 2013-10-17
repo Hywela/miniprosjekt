@@ -7,22 +7,23 @@ import java.io.ObjectOutputStream;
 import java.util.Vector;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import miniprosjekt.variables.BaseMedia;
 import miniprosjekt.variables.Jbutton;
+import miniprosjekt.variables.Jtextfield;
 import miniprosjekt.variables.Jlabel;
 import miniprosjekt.variables.Jtextarea;
-import miniprosjekt.variables.Jtextfield;
-import miniprosjekt.variables.Language;
 
 
 @SuppressWarnings("serial")
 public class MyModel extends AbstractTableModel {
 	int i=0; 
 	Vector<BaseMedia> data = new Vector<BaseMedia>();
-	String titles[] = { Language.getMsg("type"),Language.getMsg("variable_name"), Language.getMsg("text"), Language.getMsg("row"), Language.getMsg("column"),
-			Language.getMsg("rows") , Language.getMsg("columns"), Language.getMsg("fill"), Language.getMsg("alignment")};
+	String titles[] = { "Type","VariabelNavn", "Tekst", "Rad", "Kolonne","Rader" ,
+			"Kolonner","Utfylling", "Forankring"};
 	JFrame mainFrame;
 	
 	/*
@@ -78,15 +79,19 @@ public class MyModel extends AbstractTableModel {
 				case 8 : return media.getAlignment();
 			}
 		} else {
-			 if (media instanceof Jbutton)
-				return "JButton";
-			else if (media instanceof Jtextfield)
+			 if (media instanceof Jbutton){
+				 media.setType("JButton");
+			 return "JButton";
+			 }else if (media instanceof Jtextfield){
+				 media.setType("JTextField");
 				return "JTextField";
-			else if (media instanceof Jtextarea)
+			 }else if (media instanceof Jtextarea){
+				 media.setType("JTextArea");
 				return "JTextArea";
-			else if (media instanceof Jlabel)
+			}else if (media instanceof Jlabel){
+				 media.setType("JLabel");
 				return "JLabel";
-			else if (media instanceof BaseMedia)
+			}else if (media instanceof BaseMedia)
 				return "Velg et type Media";
 		}
 		return null;
@@ -177,6 +182,7 @@ public class MyModel extends AbstractTableModel {
 			
 			 } else if (((String)aValue).equals("JTextField")) {
 				newMedia = new Jtextfield (media);
+				
 			 } else if (((String)aValue).equals("JLabel")) {
 					newMedia = new Jlabel(media);
 			 } else if (((String)aValue).equals("JTextArea")) {

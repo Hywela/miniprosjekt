@@ -8,7 +8,7 @@ public class BaseMedia implements Serializable{
 
 
 	private static final long serialVersionUID = 1L;
-
+	private String type ="";
 	private String text="";
 	private String fill;
 	private String alignment;
@@ -18,6 +18,20 @@ public class BaseMedia implements Serializable{
 	
 	
 	
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	/**
 	 * @return the forankring
 	 */
@@ -195,4 +209,24 @@ public class BaseMedia implements Serializable{
 		return sb.toString();
 	}
 	
+	public void setSPValues(int h, int w, int r, int c){
+		
+	
+	}
+	public int getSPValuesHeight(){
+		
+		return getSPValuesHeight();
+	}
+	public int getSPValuesWidth(){
+		
+		return getSPValuesWidth();
+	}
+	public int getSPValuesRows(){
+		
+		return getSPValuesRows();
+	}
+	public int getSPValuesColumns(){
+		
+		return getSPValuesColumns();
+	}
 }

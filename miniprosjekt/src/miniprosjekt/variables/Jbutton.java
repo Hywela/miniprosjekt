@@ -1,8 +1,10 @@
 package miniprosjekt.variables;
 
-// Class for Jbutton
+
 public class Jbutton extends BaseMedia {
 	private static final long serialVersionUID = 1L;
+
+	
 
 	public Jbutton (BaseMedia media) {
 		super (media);

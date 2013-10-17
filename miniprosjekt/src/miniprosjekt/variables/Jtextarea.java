@@ -1,6 +1,7 @@
 package miniprosjekt.variables;
 
 public class Jtextarea extends BaseMedia {
+	private static final long serialVersionUID = 1L;
 int colums = 0;
 int rows = 0;
 int width = 0;
@@ -63,4 +64,26 @@ boolean JscrollPanel =true, WordWrapping = true;
 			       "JTextArea", super.getText()); 
 			}
 }
+	public void setSPValues(int h, int w, int r, int c){
+		height= h;
+		width =w;
+		rows = r;
+		colums =c;
+	}
+	public int getSPValuesHeight(){
+		
+		return height;
+	}
+	public int getSPValuesWidth(){
+		
+		return width;
+	}
+	public int getSPValuesRows(){
+		
+		return rows;
+	}
+	public int getSPValuesColumns(){
+		
+		return colums;
+	}
 }

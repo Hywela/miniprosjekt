@@ -35,6 +35,8 @@ import miniprosjekt.variables.Language;
 
 @SuppressWarnings("serial")
 public class ButtonLayout extends JFrame {
+	 JFrame f ;
+	private Editor  editor;
 	private MyModel dataModel = new MyModel ();
 	private JTable table = new JTable (dataModel);
 	private JToolBar toolbar = new JToolBar ();
@@ -85,16 +87,63 @@ public class ButtonLayout extends JFrame {
 	}
 	 private class RightClicker extends MouseAdapter {  
 	        public void mousePressed( MouseEvent e ) {  
-	            if ( e.isMetaDown() ) {  
-	            	int rowcheck = table.getSelectedRow();
+	        	if ( e.isMetaDown() ) {  
+	        		int rowcheck = table.getSelectedRow();
 	            	if (rowcheck > -1) {
 	                System.out.println( rowcheck); 
-	                Editor temp = new Editor();
-	                temp.test();
+	                f = new JFrame ();
+	                final Vector<BaseMedia> layoutType =dataModel.getData();
+	               
+	        	  editor = new Editor(layoutType.get(rowcheck).getType());
+	        	  editor.setValues(layoutType.get(rowcheck).getSPValuesColumns(),
+	        			  layoutType.get(rowcheck).getSPValuesRows(),
+	        			  layoutType.get(rowcheck).getSPValuesHeight(),
+	        			  layoutType.get(rowcheck).getSPValuesWidth());
+	        		f.add (editor);
+	        		f.pack ();
+	        		f.setVisible(true);
+	               
+	                JButton cancle = editor.cancle();
+	               cancle.addActionListener(new ActionListener() {
+	       			 
+	       			 
+	        			@Override
+	        			public void actionPerformed(ActionEvent e) {
+	        				f.setVisible(false);
+	        				
+	        			}
+	        	    });   
+	               JButton ok = editor.ok();
+	               ok.addActionListener(new ActionListener() {
+	       			 
+	       			 
+	        			@Override
+	        			public void actionPerformed(ActionEvent e) {
+	        				f.setVisible(false);
+	        				int rowcheck = table.getSelectedRow();
+	        				if (layoutType.get(rowcheck).getType()=="JTextField"){
+	        					layoutType.get(rowcheck).setSPValues(editor.getHeigt()
+	        							, editor.getwidth(), editor.getRow(), 0);
+	        					
+	        				}
+	        				if (layoutType.get(rowcheck).getType()=="JTextArea"){
+	        					layoutType.get(rowcheck).setSPValues(editor.getHeigt()
+	        							, editor.getwidth(), editor.getRow(), editor.getColumn());
+	        					
+	        				}
+	        				
+	        				
+	        			}
+	        	    });  
+	                	
+	              
+	        		
+	        	
 	            	}
 	            }  
 	        } 
 	  }
+	 
 	class Load implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

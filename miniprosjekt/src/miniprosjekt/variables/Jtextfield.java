@@ -40,4 +40,26 @@ public class Jtextfield extends BaseMedia {
 		}else return String.format("%s %s %s(\"%s\",%d);", super.getVariabelname(), super.toString(),
 				"JTextField", super.getText(), rows);
 	}
+public void setSPValues(int h, int w, int r, int c){
+		height= h;
+		width =w;
+		rows = r;
+	}
+public int getSPValuesHeight(){
+	
+	return height;
+}
+public int getSPValuesWidth(){
+	
+	return width;
+}
+public int getSPValuesRows(){
+	
+	return rows;
+}
+public int getSPValuesColumns(){
+	
+	return 0;
+}
+
 }
