@@ -75,8 +75,8 @@ public class MyModel extends AbstractTableModel {
 				case 4 : return media.getKolonne();
 				case 5 : return media.getRader();
 				case 6 : return media.getKolonner();
-				case 7 : return media.getUtfylling();
-				case 8 : return media.getForankring();
+				case 7 : return media.getFill();
+				case 8 : return media.getAlignment();
 			}
 		} else {
 			 if (media instanceof Jbutton)
@@ -123,49 +123,49 @@ public class MyModel extends AbstractTableModel {
 			media.setKolonner((int)aValue);
 		if (columnIndex==7){
 			 if (((String)aValue).equals("NONE")) {
-				media.setUtfylling("NONE");
+				media.setFill("NONE");
 			 }
 			 if (((String)aValue).equals("BOTH")) {
-					media.setUtfylling("BOTH");
+					media.setFill("BOTH");
 			 }
 				
 			 if (((String)aValue).equals("HORIZONTAL")) {
-					media.setUtfylling("HORIZONTAL");
+					media.setFill("HORIZONTAL");
 			 }
 				
 			 if (((String)aValue).equals("VERTICAL")) {
-					media.setUtfylling("VERTICAL");
+					media.setFill("VERTICAL");
 			 }
 		}
 			 if (columnIndex==8){
 				 if (((String)aValue).equals("WEST")) {
-					media.setForankring("WEST");
+					media.setAlignment("WEST");
 				 }
 				 if (((String)aValue).equals("NORTHWEST")) {
-					 media.setForankring("NORTHWEST");
+					 media.setAlignment("NORTHWEST");
 				 }
 					
 				 if (((String)aValue).equals("SOUTHWEST")) {
-					 media.setForankring("SOUTHWEST");
+					 media.setAlignment("SOUTHWEST");
 				 }
 					
 				 if (((String)aValue).equals("EAST")) {
-					 media.setForankring("EAST");
+					 media.setAlignment("EAST");
 				 }
 				 if (((String)aValue).equals("NORTHEAST")) {
-					 media.setForankring("NORTHEAST");
+					 media.setAlignment("NORTHEAST");
 				 }
 				 if (((String)aValue).equals("SOUTHEAST")) {
-					 media.setForankring("SOUTHEAST");
+					 media.setAlignment("SOUTHEAST");
 				 }
 				 if (((String)aValue).equals("NORTH")) {
-					 media.setForankring("NORTH");
+					 media.setAlignment("NORTH");
 				 }
 				 if (((String)aValue).equals("SOUTH")) {
-					 media.setForankring("SOUTH");
+					 media.setAlignment("SOUTH");
 				 }
 				 if (((String)aValue).equals("CENTER")) {
-					 media.setForankring("CENTER");
+					 media.setAlignment("CENTER");
 				 }
 			
 		}

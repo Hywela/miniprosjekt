@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import miniprosjekt.variables.Media;
+
 
 
 
@@ -67,13 +67,7 @@ public class Editor extends JPanel {
 		setBorder (BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	}
 
-	public Media getAnimal () {
-		Media media = new Media();
-		media.setType((String)type.getSelectedItem());
-		media.setName(name.getText());
-	//	media.setAge(Integer.parseInt(age.getText())); TODO
-		return media;
-	}
+
 	
 	public void setAddAction (ActionListener al) {
 		add.addActionListener(al);

@@ -10,8 +10,8 @@ public class BaseMedia implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private String text="";
-	private String utfylling;
-	private String forankring;
+	private String fill;
+	private String alignment;
 	int rad, kolonne,kolonner, rader;
 
 	private String variabelname;
@@ -21,29 +21,29 @@ public class BaseMedia implements Serializable{
 	/**
 	 * @return the forankring
 	 */
-	public String getForankring() {
-		return forankring;
+	public String getAlignment() {
+		return alignment;
 	}
 
 	/**
 	 * @param forankring the forankring to set
 	 */
-	public void setForankring(String forankring) {
-		this.forankring = forankring;
+	public void setAlignment(String forankring) {
+		this.alignment = forankring;
 	}
 
 	/**
 	 * @return the utfylling
 	 */
-	public String getUtfylling() {
-		return utfylling;
+	public String getFill() {
+		return fill;
 	}
 
 	/**
 	 * @param utfylling the utfylling to set
 	 */
-	public void setUtfylling(String utfylling) {
-		this.utfylling = utfylling;
+	public void setFill(String utfylling) {
+		this.fill = utfylling;
 	}
 
 	public BaseMedia () {
@@ -51,8 +51,8 @@ public class BaseMedia implements Serializable{
 	kolonne = 1;
 	rader= 1;
 	variabelname="";
-	utfylling = "CENTER";
-	forankring = "NONE";
+	fill = "CENTER";
+	alignment = "NONE";
 	}
 
 	// Vi kan opprette et nytt dyr og ta vare på egenskapene som alle dyr har til felles
@@ -166,8 +166,8 @@ public class BaseMedia implements Serializable{
 				"%ngbc.gridheight = %d;" +
 				"%ngbc.anchor = java.awt.GridBagConstraints.%s;"+//string
 				"%ngbc.fill = java.awt.GridBagConstraints.%s;"
-				,getKolonne(),getRad(),getKolonner(),getKolonne(),getForankring(),
-				getUtfylling());
+				,getKolonne(),getRad(),getKolonner(),getKolonne(),getAlignment(),
+				getFill());
 	}
 	
 	public String toString () {
