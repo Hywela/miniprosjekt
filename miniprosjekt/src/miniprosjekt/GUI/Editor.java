@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +22,8 @@ import miniprosjekt.variables.BaseMedia;
 @SuppressWarnings("serial")
 public class Editor extends JPanel {
 
+	private JCheckBox  JscrollPanel = new JCheckBox("JscrollPanel", true);
+	private JCheckBox  WordWrapping = new JCheckBox("WordWrapping", true);
 	private JTextField column = new JTextField(4);
 	private JTextField row = new JTextField(4);
 	private JTextField height = new JTextField(4);
@@ -68,9 +71,18 @@ public class Editor extends JPanel {
 			gbc.gridy = 0;
 			gbl.setConstraints(column, gbc);
 			add(column);
-
+			
+			gbc.gridx = 1;
+			gbc.gridy = 4;
+			gbl.setConstraints(JscrollPanel, gbc);
+			add(JscrollPanel);
+			gbc.gridx = 1;
+			gbc.gridy = 5;
+			gbl.setConstraints(WordWrapping, gbc);
+			add(WordWrapping);
+			
 		}
-
+		gbc.gridx = 1;
 		gbc.gridy = 1;
 		gbl.setConstraints(height, gbc);
 		add(height);
@@ -135,6 +147,25 @@ public class Editor extends JPanel {
 
 	}
 
+	public boolean getJscrollPanel(){
+		boolean selected = JscrollPanel.isSelected();
+		
+		
+		return selected;
+	}
+	public boolean getWordWrapping(){
+		boolean selected = WordWrapping.isSelected();
+		
+		
+		return selected;
+	}
+	public void setJscrollPanel(Boolean select){
+		 JscrollPanel.setSelected(select);
+		
+	}
+	public void setWordWrapping(Boolean select){
+		WordWrapping.setSelected(select);
+	}
 	public void setValues(int c, int r, int h, int w) {
 		column.setText(Integer.toString(c));
 		row.setText(Integer.toString(r));

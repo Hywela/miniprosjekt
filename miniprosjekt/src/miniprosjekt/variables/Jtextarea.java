@@ -86,4 +86,28 @@ boolean JscrollPanel =true, WordWrapping = true;
 		
 		return colums;
 	}
+	/**
+	 * @return the jscrollPanel
+	 */
+	public boolean isJscrollPanel() {
+		return JscrollPanel;
+	}
+	/**
+	 * @param jscrollPanel the jscrollPanel to set
+	 */
+	public void setJscrollPanel(boolean jscrollPanel) {
+		JscrollPanel = jscrollPanel;
+	}
+	/**
+	 * @return the wordWrapping
+	 */
+	public boolean isWordWrapping() {
+		return WordWrapping;
+	}
+	/**
+	 * @param wordWrapping the wordWrapping to set
+	 */
+	public void setWordWrapping(boolean wordWrapping) {
+		WordWrapping = wordWrapping;
+	}
 }

@@ -190,6 +190,7 @@ public class MyModel extends AbstractTableModel {
 			 } else if (((String)aValue).equals("JTextArea")) {
 					newMedia = new Jtextarea (media);
 			 }
+				 
 			data.set(rowIndex, newMedia);
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);

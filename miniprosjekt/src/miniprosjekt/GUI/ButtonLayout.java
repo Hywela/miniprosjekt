@@ -100,17 +100,22 @@ public class ButtonLayout extends JFrame {
 		public void mousePressed(MouseEvent e) {
 			if (e.isMetaDown()) {
 				int rowcheck = table.getSelectedRow();
+				final Vector<BaseMedia> layoutType = dataModel.getData();
 				if (rowcheck > -1) {
-					System.out.println(rowcheck);
-					f = new JFrame();
-					final Vector<BaseMedia> layoutType = dataModel.getData();
-
+					if (layoutType.get(rowcheck).getType() == "JTextField" ||
+							layoutType.get(rowcheck).getType() == "JTextArea") {
+					
+						f = new JFrame();
 					editor = new Editor(layoutType.get(rowcheck).getType());
 					editor.setValues(layoutType.get(rowcheck)
 							.getSPValuesColumns(), layoutType.get(rowcheck)
 							.getSPValuesRows(), layoutType.get(rowcheck)
 							.getSPValuesHeight(), layoutType.get(rowcheck)
 							.getSPValuesWidth());
+					if(layoutType.get(rowcheck).getType() == "JTextArea"){
+					editor.setWordWrapping(layoutType.get(rowcheck).isWordWrapping());
+					editor.setJscrollPanel(layoutType.get(rowcheck).isJscrollPanel());
+					}
 					f.add(editor);
 					f.pack();
 					f.setVisible(true);
@@ -141,6 +146,9 @@ public class ButtonLayout extends JFrame {
 								layoutType.get(rowcheck).setSPValues(
 										editor.getHeigt(), editor.getwidth(),
 										editor.getRow(), editor.getColumn());
+								layoutType.get(rowcheck).setWordWrapping(editor.getWordWrapping());
+								layoutType.get(rowcheck).setJscrollPanel(editor.getJscrollPanel());
+								
 
 							}
 
@@ -149,6 +157,7 @@ public class ButtonLayout extends JFrame {
 
 				}
 			}
+		}
 		}
 	}
 
@@ -209,6 +218,12 @@ public class ButtonLayout extends JFrame {
 			try {
 				BufferedWriter bw = new BufferedWriter(new FileWriter(f));
 				Vector<BaseMedia> layoutType = dataModel.getData();
+				for (int i = 0; i < layoutType.size(); i++) {
+					
+					System.out.println(layoutType.get(i).getType());
+					
+				}
+				
 				bw.write("import java.awt.*;");
 				bw.newLine();
 				bw.write("import javax.swing.*;");

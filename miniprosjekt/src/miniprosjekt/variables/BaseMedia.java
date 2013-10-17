@@ -233,4 +233,28 @@ public class BaseMedia implements Serializable{
 		
 		return getSPValuesColumns();
 	}
+	/**
+	 * @return the jscrollPanel
+	 */
+	public boolean isJscrollPanel() {
+		return isJscrollPanel();
+	}
+	/**
+	 * @param jscrollPanel the jscrollPanel to set
+	 */
+	public void setJscrollPanel(boolean jscrollPanel) {
+		
+	}
+	/**
+	 * @return the wordWrapping
+	 */
+	public boolean isWordWrapping() {
+		return isWordWrapping();
+	}
+	/**
+	 * @param wordWrapping the wordWrapping to set
+	 */
+	public void setWordWrapping(boolean wordWrapping) {
+		
+	}
 }
