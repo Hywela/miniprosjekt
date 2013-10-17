@@ -7,15 +7,13 @@ import java.io.ObjectOutputStream;
 import java.util.Vector;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import miniprosjekt.variables.BaseMedia;
 import miniprosjekt.variables.Jbutton;
-import miniprosjekt.variables.Jtextfield;
 import miniprosjekt.variables.Jlabel;
 import miniprosjekt.variables.Jtextarea;
+import miniprosjekt.variables.Jtextfield;
 import miniprosjekt.variables.Language;
 
 
@@ -179,7 +177,6 @@ public class MyModel extends AbstractTableModel {
 			
 			 } else if (((String)aValue).equals("JTextField")) {
 				newMedia = new Jtextfield (media);
-				//((Jtextfield)newMedia).setBowlPlacement(JOptionPane.showInputDialog (mainFrame, "I hvilket rom står gullfiskbollen?"));
 			 } else if (((String)aValue).equals("JLabel")) {
 					newMedia = new Jlabel(media);
 			 } else if (((String)aValue).equals("JTextArea")) {

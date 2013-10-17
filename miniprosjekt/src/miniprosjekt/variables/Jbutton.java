@@ -1,12 +1,9 @@
 package miniprosjekt.variables;
 
-// Hunder er en type dyr
+// Class for Jbutton
 public class Jbutton extends BaseMedia {
 	private static final long serialVersionUID = 1L;
 
-	
-	// Vi kan opprette en hund på grunnlag av et hvilket som helst annet dyr
-	// navn og alder blir da overført til hunden
 	public Jbutton (BaseMedia media) {
 		super (media);
 	}

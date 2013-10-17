@@ -1,7 +1,5 @@
 package miniprosjekt.variables;
 
-import javax.swing.JScrollPane;
-
 public class Jtextarea extends BaseMedia {
 int colums = 0;
 int rows = 0;
