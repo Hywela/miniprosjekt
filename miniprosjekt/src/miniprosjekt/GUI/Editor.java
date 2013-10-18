@@ -12,7 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import miniprosjekt.variables.Language;
-
+/**
+ * Editor Handles the hiddent frame for choosing values
+ * @author Kevin
+ * @author Kristoffer
+ */
 @SuppressWarnings("serial")
 public class Editor extends JPanel {
 
@@ -24,7 +28,10 @@ public class Editor extends JPanel {
 	private JTextField width = new JTextField(4);
 	private JButton add = new JButton(Language.getMsg("ok"));
 	private JButton cancle = new JButton(Language.getMsg("cancel"));
-
+	/**
+	 * Constructor
+	 * @param type
+	 */
 	public Editor(String type) {
 
 		GridBagLayout gbl = new GridBagLayout();
@@ -110,56 +117,93 @@ public class Editor extends JPanel {
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
 	}
-
+	/**
+	 * The Cancle button
+	 * @return Jbutton cancle
+	 */
 	public JButton cancle() {
 		return cancle;
 
 	}
-
+	/**
+	 * 
+	 * @return a Integer cast from column
+	 */
 	public int getColumn() {
 
 		return Integer.parseInt(column.getText());
 	}
-
+	/**
+	 * 
+	 * @return a Integer cast from height
+	 */
 	public int getHeigt() {
 
 		return Integer.parseInt(height.getText());
 	}
-
+	/**
+	 * 
+	 * @return a Integer cast from row
+	 */
 	public int getRow() {
 
 		return Integer.parseInt(row.getText());
 	}
-
+	/**
+	 * 
+	 * @return a Integer cast from width
+	 */
 	public int getwidth() {
 
 		return Integer.parseInt(width.getText());
 	}
-
+	/**
+	 * The Submit Button
+	 * @return Jbutton Object
+	 */
 	public JButton ok() {
 		return add;
 
 	}
-
+/**
+ * {@link JscrollPanel}
+ * @return bool
+ */
 	public boolean getJscrollPanel(){
 		boolean selected = JscrollPanel.isSelected();
-		
-		
 		return selected;
 	}
+	/**
+	 * 
+	 * @return bool
+	 */
 	public boolean getWordWrapping(){
 		boolean selected = WordWrapping.isSelected();
-		
-		
+
 		return selected;
 	}
+	/**
+	 * 
+	 * @param select(bool)
+	 */
 	public void setJscrollPanel(Boolean select){
 		 JscrollPanel.setSelected(select);
 		
 	}
+	/**
+	 * 
+	 * @param select(bool)
+	 */
 	public void setWordWrapping(Boolean select){
 		WordWrapping.setSelected(select);
 	}
+	/**
+	 * Sets values in jtexfield/jtextarea objects;
+	 * @param c = column
+	 * @param r = rows
+	 * @param h = height
+	 * @param w = width
+	 */
 	public void setValues(int c, int r, int h, int w) {
 		column.setText(Integer.toString(c));
 		row.setText(Integer.toString(r));

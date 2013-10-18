@@ -1,6 +1,5 @@
 package miniprosjekt.GUI;
 
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,14 +34,20 @@ import miniprosjekt.model.MyModel;
 import miniprosjekt.variables.BaseMedia;
 import miniprosjekt.variables.Language;
 
+/**
+ * ButtonLayout is the main class and also have the main , Its the start of the
+ * program. Extends a JFrame
+ * 
+ * @author Kristoffer
+ * @author Kevin
+ * 
+ */
 @SuppressWarnings("serial")
 public class ButtonLayout extends JFrame {
-	JFrame f;
-	
-	TableCellRenderer weirdRenderer;
+	JFrame f; // A subframe for the right click on the tables
 	private Editor editor;
 	private MyModel dataModel = new MyModel();
-	private JTable table= new JTable(dataModel);
+	private JTable table = new JTable(dataModel);
 	private JToolBar toolbar = new JToolBar();
 	private String layoutType[] = { "JLabel", "JTextField", "JTextArea",
 			"JButton" };
@@ -55,15 +60,15 @@ public class ButtonLayout extends JFrame {
 	private String size[] = { "NONE", "BOTH", "HORIZONTAL", "VERTICAL" };
 	private JComboBox<String> sizeEditor = new JComboBox<String>(size);
 
+	/**
+	 * Constructor
+	 */
 	public ButtonLayout() {
 		super(Language.getMsg("window_header"));
-		
-	
-		    
+
 		dataModel.setTableFrame(this);
 		fileMenu();
-		
-		
+
 		add(new JScrollPane(table), BorderLayout.CENTER);
 		table.getColumnModel().getColumn(0)
 				.setCellEditor(new DefaultCellEditor(animalTypeEditor));
@@ -71,9 +76,11 @@ public class ButtonLayout extends JFrame {
 				.setCellEditor(new DefaultCellEditor(sizeEditor));
 		table.getColumnModel().getColumn(8)
 				.setCellEditor(new DefaultCellEditor(alignmentEditor));
-		TableCellRenderer renderer = table.getTableHeader().getDefaultRenderer();
-		table.getColumnModel().getColumn(0).setCellRenderer(new ColorRenderer(renderer));
-		
+		TableCellRenderer renderer = table.getTableHeader()
+				.getDefaultRenderer();
+		table.getColumnModel().getColumn(0)
+				.setCellRenderer(new ColorRenderer(renderer));
+
 		JButton load = new JButton(new ImageIcon(getClass().getResource(
 				"/images/file.png")));
 		load.setToolTipText(Language.getMsg("open_file"));
@@ -101,78 +108,102 @@ public class ButtonLayout extends JFrame {
 		toolbar.addSeparator();
 		toolbar.add(addAnimal);
 		add(toolbar, BorderLayout.NORTH);
-		
+
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		table.addMouseListener(new RightClicker());
 	}
-	
+	/**
+	 * RightClicker extends {@link MouseAdapter}
+	 * Used for opening the Extra hidden Frame for 
+	 * setting values
+	 * @author Kristoffer 
+	 *
+	 */
 	private class RightClicker extends MouseAdapter {
 		public void mousePressed(MouseEvent e) {
 			if (e.isMetaDown()) {
 				int rowcheck = table.getSelectedRow();
 				final Vector<BaseMedia> layoutType = dataModel.getData();
 				if (rowcheck > -1) {
-					if (layoutType.get(rowcheck).getType() == "JTextField" ||
-							layoutType.get(rowcheck).getType() == "JTextArea") {
-					
+					/**
+					 * Checks so the rightclick onlyeworks for JtextField and JtextArea
+					 */
+					if (layoutType.get(rowcheck).getType() == "JTextField"
+							|| layoutType.get(rowcheck).getType() == "JTextArea") {
+
 						f = new JFrame();
-					editor = new Editor(layoutType.get(rowcheck).getType());
-					editor.setValues(layoutType.get(rowcheck)
-							.getSPValuesColumns(), layoutType.get(rowcheck)
-							.getSPValuesRows(), layoutType.get(rowcheck)
-							.getSPValuesHeight(), layoutType.get(rowcheck)
-							.getSPValuesWidth());
-					if(layoutType.get(rowcheck).getType() == "JTextArea"){
-					editor.setWordWrapping(layoutType.get(rowcheck).isWordWrapping());
-					editor.setJscrollPanel(layoutType.get(rowcheck).isJscrollPanel());
-					}
-					f.add(editor);
-					f.pack();
-					f.setVisible(true);
-
-					JButton cancle = editor.cancle();
-					cancle.addActionListener(new ActionListener() {
-
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							f.setVisible(false);
-
+						editor = new Editor(layoutType.get(rowcheck).getType());
+						editor.setValues(layoutType.get(rowcheck)
+								.getSPValuesColumns(), layoutType.get(rowcheck)
+								.getSPValuesRows(), layoutType.get(rowcheck)
+								.getSPValuesHeight(), layoutType.get(rowcheck)
+								.getSPValuesWidth());
+						if (layoutType.get(rowcheck).getType() == "JTextArea") {
+							editor.setWordWrapping(layoutType.get(rowcheck)
+									.isWordWrapping());
+							editor.setJscrollPanel(layoutType.get(rowcheck)
+									.isJscrollPanel());
 						}
-					});
-					JButton ok = editor.ok();
-					ok.addActionListener(new ActionListener() {
+						f.add(editor);
+						f.pack();
+						f.setVisible(true);
 
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							f.setVisible(false);
-							int rowcheck = table.getSelectedRow();
-							if (layoutType.get(rowcheck).getType() == "JTextField") {
-								layoutType.get(rowcheck).setSPValues(
-										editor.getHeigt(), editor.getwidth(),
-										editor.getRow(), 0);
-
-							}
-							if (layoutType.get(rowcheck).getType() == "JTextArea") {
-								layoutType.get(rowcheck).setSPValues(
-										editor.getHeigt(), editor.getwidth(),
-										editor.getRow(), editor.getColumn());
-								layoutType.get(rowcheck).setWordWrapping(editor.getWordWrapping());
-								layoutType.get(rowcheck).setJscrollPanel(editor.getJscrollPanel());
+						JButton cancle = editor.cancle();
+						cancle.addActionListener(new ActionListener() {
 								
+							/**
+							 * sets the fram invisible
+							 */
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								f.setVisible(false);
 
 							}
+						});
+						JButton ok = editor.ok();
+						/**
+						 * Action listen for the Submit button
+						 */
+						ok.addActionListener(new ActionListener() {
+ 
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								f.setVisible(false);
+								int rowcheck = table.getSelectedRow();
+								if (layoutType.get(rowcheck).getType() == "JTextField") {
+									layoutType.get(rowcheck).setSPValues(
+											editor.getHeigt(),
+											editor.getwidth(), editor.getRow(),
+											0);
 
-						}
-					});
+								}
+								if (layoutType.get(rowcheck).getType() == "JTextArea") {
+									layoutType.get(rowcheck).setSPValues(
+											editor.getHeigt(),
+											editor.getwidth(), editor.getRow(),
+											editor.getColumn());
+									layoutType.get(rowcheck).setWordWrapping(
+											editor.getWordWrapping());
+									layoutType.get(rowcheck).setJscrollPanel(
+											editor.getJscrollPanel());
 
+								}
+
+							}
+						});
+
+					}
 				}
 			}
 		}
-		}
 	}
 
+	/**
+	 * Loads the The state of the tables from a save file
+	 * also opens a file chooser
+	 */
 	class Load implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -191,7 +222,10 @@ public class ButtonLayout extends JFrame {
 			}
 		}
 	}
-
+/**
+ * Class Save 
+ * Saves the state of the program and saves it to a file
+ */
 	class Save implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -217,7 +251,11 @@ public class ButtonLayout extends JFrame {
 		}
 	}
 
-	// TODO:: bytt ut example med et generert navn
+	/**
+	 * Class SaveReport
+	 * Saves javacode generated from the tables 
+	 * to a file named exemple.java
+	 */
 	class SaveReport implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -231,11 +269,11 @@ public class ButtonLayout extends JFrame {
 				BufferedWriter bw = new BufferedWriter(new FileWriter(f));
 				Vector<BaseMedia> layoutType = dataModel.getData();
 				for (int i = 0; i < layoutType.size(); i++) {
-					
+
 					System.out.println(layoutType.get(i).getType());
-					
+
 				}
-				
+
 				bw.write("import java.awt.*;");
 				bw.newLine();
 				bw.write("import javax.swing.*;");
@@ -289,14 +327,19 @@ public class ButtonLayout extends JFrame {
 	}
 
 	/**
+	 * main
 	 * @param args
+	 * The start of the program
+	 * Loads the language and creates a new ButtonLayout
 	 */
 	public static void main(String[] args) {
 		Language.setLocale(args);
 		new ButtonLayout();
 
 	}
-
+/**
+ * 
+ */
 	public void fileMenu() {
 
 		JMenuBar menuBar = new JMenuBar();
@@ -330,16 +373,16 @@ public class ButtonLayout extends JFrame {
 		// edit menu buttons
 		editMenu.add(newItemAction);
 		editMenu.add(deleteItemAction);
-		
+
 		// file menu actions
 		newAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				final Vector<BaseMedia> layoutType = dataModel.getData();
-				for(int i = 0; i < layoutType.size();){
-						layoutType.remove(0);
-				}	
+				for (int i = 0; i < layoutType.size();) {
+					layoutType.remove(0);
+				}
 				table.updateUI();
-			}	
+			}
 		});
 
 		openAction.addActionListener(new Load());
@@ -360,11 +403,11 @@ public class ButtonLayout extends JFrame {
 				dataModel.addMedia();
 			}
 		});
-		
+
 		deleteItemAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				final Vector<BaseMedia> layoutType = dataModel.getData();
-				if(table.getSelectedRow() != -1){
+				if (table.getSelectedRow() != -1) {
 					layoutType.remove(table.getSelectedRow());
 					table.updateUI();
 				}
