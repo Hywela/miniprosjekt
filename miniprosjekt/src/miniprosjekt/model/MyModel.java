@@ -56,7 +56,6 @@ public class MyModel extends AbstractTableModel {
 			case 4 : return (new Integer(0)).getClass();
 			case 5 : return (new Integer(0)).getClass();
 			case 6 : return (new Integer(0)).getClass();
-			
 			case 7 :  return ("").getClass();
 			case 8 : return ("").getClass();
 		}

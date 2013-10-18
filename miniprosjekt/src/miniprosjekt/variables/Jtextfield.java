@@ -3,7 +3,8 @@ package miniprosjekt.variables;
 /**
  * This class handles the JTextField
  * 
- * @author hyw
+ * @author Kevin
+ * @author Kristoffer
  * 
  */
 public class Jtextfield extends BaseMedia {

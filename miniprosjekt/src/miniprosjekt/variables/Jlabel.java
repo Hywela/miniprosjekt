@@ -2,8 +2,8 @@ package miniprosjekt.variables;
 
 /**
  * Jlabel is a child class of BaseMedia
- * 
- * @author hyw
+ * @author Kevin
+ * @author Kristoffer
  * 
  */
 public class Jlabel extends BaseMedia {

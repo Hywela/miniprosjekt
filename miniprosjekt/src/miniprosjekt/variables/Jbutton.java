@@ -2,8 +2,9 @@ package miniprosjekt.variables;
 
 /**
  * Jbutton is a child class of BaseMedia
- * 
- * @author hyw It handles most of the code generation for JButton
+ * @author Kevin
+ * @author Kristoffer
+ *  It handles most of the code generation for JButton
  */
 public class Jbutton extends BaseMedia {
 	private static final long serialVersionUID = 1L;

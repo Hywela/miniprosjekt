@@ -1,40 +1,49 @@
 package miniprosjekt.GUI;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.border.Border;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
-
-import miniprosjekt.model.MyModel;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.event.ComponentEvent;
-
+/**
+ * Class for Custom renderer on table column
+ * @author Kevin
+ * @author Kristoffer
+ *
+ */
 public class ColorRenderer extends JLabel implements TableCellRenderer {
 
-    private TableCellRenderer delegate;
+  
+	private static final long serialVersionUID = -8139799299608461239L;
+	private TableCellRenderer delegate;
     private Component component;
 
+    /**
+     * Constructor
+     * @param defaultRenderer
+     */
     public ColorRenderer(TableCellRenderer defaultRenderer)
     {
         this.delegate = defaultRenderer;
     }
 
-    @Override
-    public Component getTableCellRendererComponent(JTable table, Object value,
-                           boolean isSelected, boolean hasFocus, int row, int column)
-    {
-        component = delegate.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-      //  component.setBackground(Color.cyan);
-        component.setForeground(Color.RED);
-        
-        return component;
-        // return this;
-    }
+	/**
+	 * Overides the Rendere and sets the tekst color to Red
+	 * 
+	 * @return component
+	 */
+	@Override
+	public Component getTableCellRendererComponent(JTable table, Object value,
+			boolean isSelected, boolean hasFocus, int row, int column) {
+		component = delegate.getTableCellRendererComponent(table, value,
+				isSelected, hasFocus, row, column);
+
+		component.setForeground(Color.RED);
+
+		return component;
+		// return this;
+	}
 
   
 }

@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 /**
  * Class Basemedia is a mother class for Jbutton , Jlabel, Jtextarea, Jtextfield
- * @author hyw
+ * @author Kevin
+ * @author Kristoffer
  * It has 9 variables
  * 
  */
