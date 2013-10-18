@@ -101,7 +101,7 @@ public class MyModel extends AbstractTableModel {
 				 media.setType("JLabel");
 				return "JLabel";
 			}else if (media instanceof BaseMedia)
-				return "Velg et type Media";
+				return Language.getMsg("Choose_type");
 		}
 		return null;
 	}
@@ -229,11 +229,11 @@ public class MyModel extends AbstractTableModel {
 		} catch (EOFException eofe) {
 			// Slutt på fila
 		} catch (ClassCastException cce) {
-			System.err.println ("OPPPSSSSS, dette var ingen dyrehage");
+			System.err.println ("error wrong filetype");
 		} catch (ClassNotFoundException cnfe) {
-			System.err.println ("Oi, vi har mista ur-dyret.");
+			System.err.println ("lost base types.");
 		} catch (IOException ioe) {
-			System.err.println ("Feil under lesing fra fil");
+			System.err.println ("error reading file");
 		} finally {
 			fireTableDataChanged();
 		}

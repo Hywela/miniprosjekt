@@ -3,21 +3,15 @@ package miniprosjekt.GUI;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import miniprosjekt.model.MyModel;
-import miniprosjekt.variables.BaseMedia;
+import miniprosjekt.variables.Language;
 
 @SuppressWarnings("serial")
 public class Editor extends JPanel {
@@ -28,8 +22,8 @@ public class Editor extends JPanel {
 	private JTextField row = new JTextField(4);
 	private JTextField height = new JTextField(4);
 	private JTextField width = new JTextField(4);
-	private JButton add = new JButton("Ok");
-	private JButton cancle = new JButton("cancle");
+	private JButton add = new JButton(Language.getMsg("ok"));
+	private JButton cancle = new JButton(Language.getMsg("cancel"));
 
 	public Editor(String type) {
 
@@ -42,24 +36,24 @@ public class Editor extends JPanel {
 		if (type == "JTextArea") {
 			gbc.gridx = 0;
 			gbc.gridy = 0;
-			JLabel lcolumn = new JLabel("column : ");
+			JLabel lcolumn = new JLabel(Language.getMsg("column")+ " : ");
 			gbl.setConstraints(lcolumn, gbc);
 			add(lcolumn);
 
 		}
 		gbc.gridx = 0;
 		gbc.gridy = 1;
-		JLabel lheight = new JLabel("height : ");
+		JLabel lheight = new JLabel(Language.getMsg("hight")+ " : ");
 		gbl.setConstraints(lheight, gbc);
 		add(lheight);
 
 		gbc.gridy = 2;
-		JLabel lwidth = new JLabel("Width : ");
+		JLabel lwidth = new JLabel(Language.getMsg("width")+ " : ");
 		gbl.setConstraints(lwidth, gbc);
 		add(lwidth);
 
 		gbc.gridy = 3;
-		JLabel lrow = new JLabel("row : ");
+		JLabel lrow = new JLabel(Language.getMsg("row")+ " : ");
 		gbl.setConstraints(lrow, gbc);
 		add(lrow);
 
