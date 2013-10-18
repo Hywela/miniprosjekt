@@ -2,9 +2,6 @@ package miniprosjekt.GUI;
 
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -25,7 +22,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -321,6 +317,7 @@ public class ButtonLayout extends JFrame {
 		JMenuItem exitAction = new JMenuItem(Language.getMsg("exit"));
 		JMenuItem genAction = new JMenuItem(Language.getMsg("export"));
 		JMenuItem newItemAction = new JMenuItem(Language.getMsg("add"));
+		JMenuItem deleteItemAction = new JMenuItem(Language.getMsg("delete"));
 
 		// file menu buttons
 		fileMenu.add(newAction);
@@ -332,12 +329,17 @@ public class ButtonLayout extends JFrame {
 
 		// edit menu buttons
 		editMenu.add(newItemAction);
-
+		editMenu.add(deleteItemAction);
+		
 		// file menu actions
 		newAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				// TODO: add action for new file
-			}
+				final Vector<BaseMedia> layoutType = dataModel.getData();
+				for(int i = 0; i < layoutType.size();){
+						layoutType.remove(0);
+				}	
+				table.updateUI();
+			}	
 		});
 
 		openAction.addActionListener(new Load());
@@ -356,6 +358,16 @@ public class ButtonLayout extends JFrame {
 		newItemAction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				dataModel.addMedia();
+			}
+		});
+		
+		deleteItemAction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				final Vector<BaseMedia> layoutType = dataModel.getData();
+				if(table.getSelectedRow() != -1){
+					layoutType.remove(table.getSelectedRow());
+					table.updateUI();
+				}
 			}
 		});
 
