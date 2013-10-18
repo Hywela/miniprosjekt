@@ -3,11 +3,18 @@ package miniprosjekt.variables;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-//Class for getting the correct language bundle 
+/**
+ * file for handelig the finding and storing the lanugabe bundle spesified by user
+ * if no lanugage is chosen will look up default language.
+ * 
+ * @author Kristoffer
+ * @author Kevin
+ *
+ */
 public class Language {
 
-	private static ResourceBundle messages;
-	private static Locale currentLocale;
+	private static ResourceBundle messages;	//holds string values
+	private static Locale currentLocale;	//holds users current locaton and language
 	
 	/**
 	 * Chooses what language bundle to use
