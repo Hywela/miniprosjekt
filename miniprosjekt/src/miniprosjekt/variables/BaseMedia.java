@@ -2,11 +2,13 @@ package miniprosjekt.variables;
 
 import java.io.Serializable;
 
-
+/**
+ * Class Basemedia is a mother class for Jbutton , Jlabel, Jtextarea, Jtextfield
+ * @author hyw
+ * It has 9 variables
+ * 
+ */
 public class BaseMedia implements Serializable{
-	
-
-
 	private static final long serialVersionUID = 1L;
 	private String type ="";
 	private String text="";
@@ -40,10 +42,10 @@ public class BaseMedia implements Serializable{
 	}
 
 	/**
-	 * @param forankring the forankring to set
+	 * @param alignment the alignment to set
 	 */
-	public void setAlignment(String forankring) {
-		this.alignment = forankring;
+	public void setAlignment(String alignment) {
+		this.alignment = alignment;
 	}
 
 	/**
@@ -59,7 +61,9 @@ public class BaseMedia implements Serializable{
 	public void setFill(String utfylling) {
 		this.fill = utfylling;
 	}
-
+/**
+ *  Constructor for BaseMedia 
+ */
 	public BaseMedia () {
 	rad = 1;
 	kolonne = 1;
@@ -71,9 +75,12 @@ public class BaseMedia implements Serializable{
 	type="JLabel";
 	}
 
-	// Vi kan opprette et nytt dyr og ta vare på egenskapene som alle dyr har til felles
+	/**
+	 * Sets the local values from the media object;
+	 * @param media
+	 */
 	public BaseMedia (BaseMedia media) {
-		fill = media.fill;
+		fill = media.fill; 
 		alignment = media.alignment;
 		text = media.text;
 		rad = media.rad;
@@ -162,21 +169,22 @@ public class BaseMedia implements Serializable{
 	}
 
 	/**
-	 * @return the Kolonner
+	 * @return the kolonner
 	 */
 	public int getKolonner() {
 		return kolonner;
 	}
 
 	/**
-	 * @param kolloner the Kolonner to set
+	 * @param kolloner the kolonner to set
 	 */
 	public void setKolonner(int kolonner) {
 		this.kolonner = kolonner;
 	}
-	
-	//111111111111111111111111111111
-	
+	/**
+	 * Generates the Gridbaglayour code
+	 * @return String
+	 */
 	public String getGridBagPara(){
 		return String.format( "%ngbc.gridx = %d;" +
 				"%ngbc.gridy = %d;" +
@@ -187,71 +195,94 @@ public class BaseMedia implements Serializable{
 				,getKolonne(),getRad(),getKolonner(),getKolonne(),getAlignment(),
 				getFill());
 	}
-	
+	/**
+	 * Strings together javacode for the javafile
+	 * @return string
+	 */
 	public String toString () {
 		StringBuilder sb = new StringBuilder ();
-		
 		sb.append ("= new");
-	
 		return sb.toString();
 	}
-	public String getDec(){
-		
-		StringBuilder sb = new StringBuilder ();
-		
+	/**
+	 * Strings together javacode for the javafile
+	 * @return string
+	 */
+	public String getDec(){	
+		StringBuilder sb = new StringBuilder ();		
 		sb.append (getVariabelname());
-		
 		return sb.toString();
 	}
+	/**
+	 * Used to visit the child
+	 * @return a string from the child
+	 */
 	public String getAddToTable(){
 		
-		StringBuilder sb = new StringBuilder ();
-		
-		
-		
-		
-		return sb.toString();
+		return null;
 	}
-	
-	public void setSPValues(int h, int w, int r, int c){
-		
+	/**
+	 * Sets values in the child member of this class
+	 * @param h (heigth)
+	 * @param w	(With)
+	 * @param r	(Rows)
+	 * @param c	(Colums)
+	 */
+	public void setSPValues(int h, int w, int r, int c){	
 	
 	}
+	/**
+	 * @return a value from the child of this object
+	 */
 	public int getSPValuesHeight(){
 		
 		return getSPValuesHeight();
 	}
+	/**
+	 * @return a value from the child of this object
+	 */
 	public int getSPValuesWidth(){
 		
 		return getSPValuesWidth();
 	}
+	
+	/**
+	 * @return a value from the child of this object
+	 */
 	public int getSPValuesRows(){
 		
 		return getSPValuesRows();
 	}
+	/**
+	 * @return a value from the child of this object
+	 */
 	public int getSPValuesColumns(){
 		
 		return getSPValuesColumns();
 	}
 	/**
+	 * gets a bool from in the child of this object
 	 * @return the jscrollPanel
 	 */
 	public boolean isJscrollPanel() {
 		return isJscrollPanel();
 	}
-	/**
+	/** 
+	 * Sets a bool to true or false in the child of this object
 	 * @param jscrollPanel the jscrollPanel to set
 	 */
 	public void setJscrollPanel(boolean jscrollPanel) {
 		
 	}
 	/**
+	 * gets a bool from in the child of this object
 	 * @return the wordWrapping
 	 */
 	public boolean isWordWrapping() {
 		return isWordWrapping();
 	}
 	/**
+	 * Sets a bool to true or false in the child of this object
 	 * @param wordWrapping the wordWrapping to set
 	 */
 	public void setWordWrapping(boolean wordWrapping) {
